@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수보라빛 안양 - FC안양 팬 아카이브</title>
+    <style>
+        /* 기본 스타일 Reset & Variable */
+        :root {
+            --anyang-purple: #4B0082; /* 안양 시그니처 보라색 */
+            --anyang-light-purple: #6A5ACD;
+            --anyang-gold: #FFD700;   /* 골드 포인트 */
+            --bg-dark: #121212;
+            --card-bg: #1E1E2E;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 내비게이션 바 (GNB) */
+        header {
+            background-color: rgba(75, 0, 130, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--anyang-gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--anyang-gold);
+        }
+
+        /* 히어로 섹션 (메인 비주얼) */
+        .hero {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.8), rgba(18, 18, 18, 0.9)), 
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1500&q=80') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--anyang-gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 600px;
+        }
+
+        /* 메인 메뉴 그리드 */
+        .main-content {
+            max-width: 1200px;
+            margin: -4rem auto 4rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--anyang-gold);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            align-self: flex-start;
+            padding: 0.5rem 1rem;
+            background-color: var(--anyang-purple);
+            color: var(--anyang-gold);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #0A0A0A;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 반응형 모바일 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* 모바일 전용 메뉴 버튼으로 대체 가능 */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
+            <ul class="nav-menu">
+                <li><a href="about.html">A-N-Y-A-N-G</a></li>
+                <li><a href="stadium.html">경기장 정보</a></li>
+                <li><a href="food.html">근처 맛집 추천</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <h1>CIVITANO • PARADIZO • FELIĈO</h1>
+        <p>시민, 낙원, 그리고 행복. FC안양의 보랏빛 순간들과 정보를 기록하는 공간입니다.</p>
+    </section>
+
+    <!-- 1차 메뉴 카드 영역 -->
+    <main class="main-content">
+        <div class="grid-container">
+
+            <!-- 메뉴 1 -->
+            <a href="about.html" class="card">
+                <div>
+                    <div class="card-icon">👑</div>
+                    <h2>A-N-Y-A-N-G</h2>
+                    <p>제작자가 안양 팬이 된 이유와 구단 히스토리, 브랜드 가치 정리</p>
+                </div>
+                <span class="card-btn">보러가기 &rarr;</span>
+            </a>
+
+            <!-- 메뉴 2 -->
+            <a href="stadium.html" class="card">
+                <div>
+                    <div class="card-icon">🏟️</div>
+                    <h2>경기장 정보</h2>
+                    <p>안양 종합운동장 원정석 위치, 구장 내 먹거리, 주차 꿀팁 완벽 안내</p>
+                </div>
+                <span class="card-btn">보러가기 &rarr;</span>
+            </a>
+
+            <!-- 메뉴 3 -->
+            <a href="food.html" class="card">
+                <div>
+                    <div class="card-icon">⚽</div>
+                    <h2>근처 맛집 추천</h2>
+                    <p>종합운동장, 범계역, 안양일번가 주변 뒷풀이/혼밥 맛집 지도 추천</p>
+                </div>
+                <span class="card-btn">보러가기 &rarr;</span>
+            </a>
+
+            <!-- 메뉴 4 -->
+            <a href="gallery.html" class="card">
+                <div>
+                    <div class="card-icon">📸</div>
+                    <h2>직관 갤러리</h2>
+                    <p>직접 경기장에 찾아가 카메라로 담아낸 생생한 직관 사진 앨범</p>
+                </div>
+                <span class="card-btn">보러가기 &rarr;</span>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- 하단 정보 -->
+    <footer>
+        <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>
+    </footer>
+
+</body>
+</html>
