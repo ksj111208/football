@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>근처 맛집 추천 - FC안양 팬 아카이브</title>
+    <style>
+        /* 공통 스타일 */
+        :root {
+            --anyang-purple: #4B0082;
+            --anyang-light-purple: #6A5ACD;
+            --anyang-gold: #FFD700;
+            --bg-dark: #121212;
+            --card-bg: #1E1E2E;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 내비게이션 바 */
+        header {
+            background-color: rgba(75, 0, 130, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--anyang-gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--anyang-gold);
+        }
+
+        /* 페이지 헤더 */
+        .page-header {
+            background-color: var(--anyang-purple);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--anyang-gold);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            color: var(--anyang-gold);
+            font-size: 1.1rem;
+        }
+
+        /* 메인 콘텐츠 */
+        .food-content {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro-block {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--anyang-gold);
+        }
+
+        .intro-block h2 {
+            font-size: 1.6rem;
+            color: var(--anyang-light-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-block p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* 맛집 테이블 스타일 */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .food-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+
+        .food-table th {
+            background-color: var(--anyang-purple);
+            color: var(--anyang-gold);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 1rem 1.2rem;
+            border-bottom: 2px solid var(--anyang-gold);
+        }
+
+        .food-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            vertical-align: middle;
+        }
+
+        .food-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .food-table tr:hover {
+            background-color: rgba(106, 90, 205, 0.1);
+        }
+
+        .food-table strong {
+            color: var(--text-white);
+            font-size: 1.05rem;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            background-color: rgba(255, 215, 0, 0.15);
+            color: var(--anyang-gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #0A0A0A;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .food-content { padding: 0 1rem; }
+            .page-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
+            <ul class="nav-menu">
+                <li><a href="about.html">A-N-Y-A-N-G</a></li>
+                <li><a href="stadium.html">경기장 정보</a></li>
+                <li><a href="food.html" style="color: var(--anyang-gold);">근처 맛집 추천</a></li>
+                <li><a href="gallery.html">갤러리</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 페이지 타이틀 -->
+    <section class="page-header">
+        <h1>MATCH DAY FOOD GUIDE</h1>
+        <p>안양 종합운동장 근처 맛집 & 뒷풀이 추천 장소</p>
+    </section>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="food-content">
+        
+        <div class="intro-block">
+            <h2>🍻 금강산도 식후경, 경기 전후 추천 맛집</h2>
+            <p>직관 전 든든한 식사부터 경기 후 승리의 기쁨을 나눌 뒷풀이 장소까지 안양 팬들이 즐겨 찾는 종합운동장 인근 맛집 목록입니다.</p>
+        </div>
+
+        <!-- 맛집 목록 표 -->
+        <div class="table-container">
+            <table class="food-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">식당명</th>
+                        <th style="width: 25%;">추천 메뉴</th>
+                        <th style="width: 20%;">위치 / 거리</th>
+                        <th style="width: 35%;">특징 & 꿀팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>아사달</strong></td>
+                        <td><span class="menu-tag">삼겹살</span> <span class="menu-tag">목살</span></td>
+                        <td>종합운동장 정문 도보 3분</td>
+                        <td>안양 팬들의 대표적인 뒷풀이 성지. 승리 직후 서포터즈 응원가 소리가 울려 퍼지는 분위기</td>
+                    </tr>
+                    <tr>
+                        <td><strong>중화미식</strong></td>
+                        <td><span class="menu-tag">불고기 짜장면</span> <span class="menu-tag">짬뽕</span></td>
+                        <td>종합운동장 인근 도보 5분</td>
+                        <td>불향 가득한 불고기가 푸짐하게 올라간 대표 시그니처 '불고기 짜장면'이 별미인 중식당</td>
+                    </tr>
+                    <tr>
+                        <td><strong>유메식당</strong></td>
+                        <td><span class="menu-tag">돈카츠</span> <span class="menu-tag">가츠동</span></td>
+                        <td>종합운동장 인근 도보 5분</td>
+                        <td>두툼하고 바삭한 일식 돈가스 맛집. 경기 시작 전 혼밥이나 깔끔한 식사에 적합</td>
+                    </tr>
+                    <tr>
+                        <td><strong>안양감자탕</strong></td>
+                        <td><span class="menu-tag">뼈해장국</span> <span class="menu-tag">감자탕</span></td>
+                        <td>운동장 사거리 도보 7분</td>
+                        <td>진한 국물과 푸짐한 뼈다귀. 추운 날씨 경기 후 뜨끈하게 속 풀기 좋은 곳</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- 하단 정보 -->
+    <footer>
+        <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>
+    </footer>
+
+</body>
+</html>
