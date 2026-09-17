@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수보라빛 안양 - FC안양 팬 아카이브</title>
     <style>
-        /* 기본 스타일 Reset & Variable */
         :root {
-            --anyang-purple: #4B0082; /* 안양 시그니처 보라색 */
+            --anyang-purple: #4B0082;
             --anyang-light-purple: #6A5ACD;
-            --anyang-gold: #FFD700;   /* 골드 포인트 */
+            --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
             --text-white: #FFFFFF;
@@ -34,7 +33,7 @@
             color: inherit;
         }
 
-        /* 내비게이션 바 (GNB) */
+        /* 내비게이션 바 */
         header {
             background-color: rgba(75, 0, 130, 0.95);
             position: sticky;
@@ -74,36 +73,59 @@
             color: var(--anyang-gold);
         }
 
-        /* 히어로 섹션 */
+        /* 히어로 섹션 (배경 main2.jpg 적용 및 블러 효과) */
         .hero {
-            background: linear-gradient(135deg, rgba(75, 0, 130, 0.9), rgba(18, 18, 18, 0.95));
-            padding: 4rem 1rem 3rem 1rem;
+            position: relative;
+            background: url('./img/main2.jpg') center/cover no-repeat;
+            padding: 5rem 1rem 4rem 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden;
+        }
+
+        /* 배경 흐림(Blur) 및 어둡게 처리하는 오버레이 레이어 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(18, 18, 18, 0.65); /* 어두운 레이어 */
+            backdrop-filter: blur(5px); /* 이미지 블러(흐림) 처리 */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* 텍스트 및 대표 이미지가 블러 오버레이 위에 오도록 설정 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero h1 {
             font-size: 2.8rem;
             color: var(--anyang-gold);
             margin-bottom: 0.8rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-gray);
+            color: #E0E0E0;
             max-width: 600px;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
 
-        /* 800x1313 세로 비율 이미지 전용 중앙 배치 영역 */
+        /* 메인 대표 이미지 (main1.jpg) */
         .main-img-container {
             width: 100%;
-            max-width: 450px; /* 세로형 이미지에 맞춰 영역 너비 조절 */
-            margin: 0 auto;
+            max-width: 900px;
             padding: 0 1rem;
             display: flex;
             justify-content: center;
@@ -111,13 +133,11 @@
 
         .main-img-container img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 800 / 1313; /* 원본 비율 고정 */
-            max-height: 600px;       /* 너무 길어지지 않게 최대 높이 제한 */
+            max-height: 480px;
             object-fit: cover;
             border-radius: 16px;
             border: 2px solid var(--anyang-gold);
-            box-shadow: 0 10px 30px rgba(75, 0, 130, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         }
 
         /* 메인 메뉴 그리드 */
@@ -186,29 +206,16 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 반응형 모바일 */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .main-img-container {
-                max-width: 320px; /* 모바일 환경에 적합한 폭 */
-            }
-            .main-img-container img {
-                max-height: 480px;
-            }
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .main-img-container img { max-height: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
@@ -221,22 +228,20 @@
         </div>
     </header>
 
-    <!-- 히어로 섹션 -->
+    <!-- 히어로 섹션 (main2.jpg 블러 배경 적용) -->
     <section class="hero">
-        <h1>CIVITANO • PARADIZO • FELIĈO</h1>
-        <p>시민, 낙원, 그리고 행복. FC안양의 보랏빛 순간들과 정보를 기록하는 공간입니다.</p>
-        
-        <!-- 중앙 대표 이미지 배치 (800x1313 세로 비율 최적화) -->
-        <div class="main-img-container">
-            <img src="./img/main1.jpg" alt="FC안양 메인 이미지">
+        <div class="hero-content">
+            <h1>CIVITANO • PARADIZO • FELIĈO</h1>
+            <p>시민, 낙원, 그리고 행복. FC안양의 보랏빛 순간들과 정보를 기록하는 공간입니다.</p>
+            
+            <div class="main-img-container">
+                <img src="./img/main1.jpg" alt="FC안양 메인 대표 이미지">
+            </div>
         </div>
     </section>
 
-    <!-- 1차 메뉴 카드 영역 -->
     <main class="main-content">
         <div class="grid-container">
-
-            <!-- 메뉴 1 -->
             <a href="about.html" class="card">
                 <div>
                     <div class="card-icon">👑</div>
@@ -246,7 +251,6 @@
                 <span class="card-btn">보러가기 &rarr;</span>
             </a>
 
-            <!-- 메뉴 2 -->
             <a href="stadium.html" class="card">
                 <div>
                     <div class="card-icon">🏟️</div>
@@ -256,7 +260,6 @@
                 <span class="card-btn">보러가기 &rarr;</span>
             </a>
 
-            <!-- 메뉴 3 -->
             <a href="food.html" class="card">
                 <div>
                     <div class="card-icon">⚽</div>
@@ -266,7 +269,6 @@
                 <span class="card-btn">보러가기 &rarr;</span>
             </a>
 
-            <!-- 메뉴 4 -->
             <a href="gallery.html" class="card">
                 <div>
                     <div class="card-icon">📸</div>
@@ -275,11 +277,9 @@
                 </div>
                 <span class="card-btn">보러가기 &rarr;</span>
             </a>
-
         </div>
     </main>
 
-    <!-- 하단 정보 -->
     <footer>
         <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>

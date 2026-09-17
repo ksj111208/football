@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>경기장 정보 - FC안양 팬 아카이브</title>
     <style>
-        /* 공통 스타일 (index.html, about.html과 동일) */
         :root {
             --anyang-purple: #4B0082;
             --anyang-light-purple: #6A5ACD;
@@ -75,7 +74,7 @@
             color: var(--anyang-gold);
         }
 
-        /* 서브페이지 헤더 */
+        /* 페이지 헤더 */
         .page-header {
             background-color: var(--anyang-purple);
             padding: 4rem 2rem;
@@ -95,11 +94,27 @@
             font-size: 1.1rem;
         }
 
-        /* 본문 콘텐츠 */
+        /* 경기장 본문 콘텐츠 */
         .stadium-content {
             max-width: 1000px;
-            margin: 4rem auto;
+            margin: 3rem auto 4rem auto;
             padding: 0 2rem;
+        }
+
+        /* 경기장 상단 이미지 영역 (stadium1.jpg) */
+        .stadium-img-container {
+            width: 100%;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .stadium-img-container img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--anyang-gold);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         /* 테이블 스타일 */
@@ -160,7 +175,6 @@
             font-weight: bold;
         }
 
-        /* 푸터 */
         footer {
             background-color: #0A0A0A;
             text-align: center;
@@ -171,17 +185,16 @@
             margin-top: 4rem;
         }
 
-        /* 반응형 모바일 */
         @media (max-width: 768px) {
             .nav-menu { display: none; }
             .stadium-content { padding: 0 1rem; }
             .info-table th, .info-table td { padding: 1rem; font-size: 0.95rem; }
+            .stadium-img-container img { max-height: 250px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
@@ -194,14 +207,18 @@
         </div>
     </header>
 
-    <!-- 페이지 타이틀 -->
     <section class="page-header">
         <h1>STADIUM INFO</h1>
         <p>안양 종합운동장(아워네이션) 직관 완벽 가이드</p>
     </section>
 
-    <!-- 경기장 정보 표 콘텐츠 -->
     <main class="stadium-content">
+        <!-- 경기장 대표 이미지 영역 추가 (stadium1.jpg) -->
+        <div class="stadium-img-container">
+            <img src="./img/stadium1.jpg" alt="안양 종합운동장 전경">
+        </div>
+
+        <!-- 경기장 정보 표 -->
         <div class="info-table-container">
             <table class="info-table">
                 <thead>
@@ -212,7 +229,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 기본 정보 -->
                     <tr>
                         <td class="category" rowspan="3">기본 정보</td>
                         <td class="sub-category">위치</td>
@@ -233,8 +249,6 @@
                             • <span class="highlight">대체 주차장:</span> 만차 시 수촌마을 공영주차장, 비산체육공원 주차장, 또는 안양시청 주차장(주말 무료/대중교통 10분 연계) 이용 추천
                         </td>
                     </tr>
-
-                    <!-- 구역별 안내 -->
                     <tr>
                         <td class="category" rowspan="3">구역별 안내</td>
                         <td class="sub-category">홈 응원석 (N석)</td>
@@ -248,8 +262,6 @@
                         <td class="sub-category">원정석 (S석)</td>
                         <td class="details">원정 팀 팬 전용 구역 (원정 전용 가변석 및 트랙 구역)</td>
                     </tr>
-
-                    <!-- 직관 꿀팁 -->
                     <tr>
                         <td class="category" rowspan="3">직관 꿀팁</td>
                         <td class="sub-category">구장 내 먹거리</td>
@@ -277,7 +289,6 @@
         </div>
     </main>
 
-    <!-- 하단 정보 -->
     <footer>
         <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>
