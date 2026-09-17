@@ -73,44 +73,66 @@
             color: var(--anyang-gold);
         }
 
-        /* 히어로 섹션 (main1.jpg 사진이 잘리지 않도록 contain 처리) */
+        /* 히어로 섹션 (main2.jpg 흐린 배경 적용) */
         .hero {
             position: relative;
-            background-color: #0A0A0A;
-            padding: 3rem 1rem;
+            background: url('./img/main2.jpg') center/cover no-repeat;
+            padding: 4rem 1rem;
             text-align: center;
             border-bottom: 4px solid var(--anyang-gold);
+            overflow: hidden;
         }
 
-        .hero-img-container {
-            max-width: 1000px;
+        /* main2.jpg 흐림(Blur) 및 어둡게 처리하는 오버레이 레이어 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(18, 18, 18, 0.65); /* 텍스트 가독성을 위한 어두운 레이어 */
+            backdrop-filter: blur(4px); /* 배경 사진 흐림 효과 */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* 배경 오버레이 위로 콘텐츠 배치 */
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* main1.jpg 용기 크기 조절 (인물 보존 + 크기 축소) */
+        .hero-img-container {
+            max-width: 550px; /* 기존보다 상자 크기를 아담하게 축소 */
+            margin: 0 auto 1.5rem auto;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 215, 0, 0.3);
         }
 
         .hero-img-container img {
             width: 100%;
-            height: auto;
+            max-height: 380px; /* 높이 제한으로 인물이 짤리지 않고 알맞게 들어가도록 조절 */
+            object-fit: cover;
+            object-position: center; /* 인물 위주로 중앙 정렬 */
             display: block;
-            object-fit: contain; /* 사진의 비율을 유지하여 잘림 방지 */
-        }
-
-        .hero-text {
-            margin-top: 2rem;
         }
 
         .hero-text h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: var(--anyang-gold);
             margin-bottom: 0.5rem;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
         }
 
         .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
+            font-size: 1.15rem;
+            color: var(--text-white);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
         }
 
         /* 메인 링크 카드 영역 */
@@ -183,7 +205,8 @@
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .hero-text h1 { font-size: 2rem; }
+            .hero-text h1 { font-size: 1.8rem; }
+            .hero-img-container { max-width: 90%; }
         }
     </style>
 </head>
@@ -202,14 +225,16 @@
         </div>
     </header>
 
-    <!-- 히어로 섹션 (main1.jpg 전체 표시) -->
+    <!-- 히어로 섹션 (main2.jpg 배경 흐림 + main1.jpg 축소 배치) -->
     <section class="hero">
-        <div class="hero-img-container">
-            <img src="./img/main1.jpg" alt="FC안양 메인 이미지">
-        </div>
-        <div class="hero-text">
-            <h1>수보라빛으로 물드는 공간</h1>
-            <p>FC안양 팬을 위한 직관 정보 & 아카이브</p>
+        <div class="hero-content">
+            <div class="hero-img-container">
+                <img src="./img/main1.jpg" alt="FC안양 메인 이미지">
+            </div>
+            <div class="hero-text">
+                <h1>수보라빛으로 물드는 공간</h1>
+                <p>FC안양 팬을 위한 직관 정보 & 아카이브</p>
+            </div>
         </div>
     </section>
 
