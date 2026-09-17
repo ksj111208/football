@@ -74,7 +74,7 @@
             color: var(--anyang-gold);
         }
 
-        /* 서브페이지 헤더 (보라색 오버레이 제거 + history1.jpg 블러 배경만 적용) */
+        /* 서브페이지 헤더 (history1.jpg 적용) */
         .page-header {
             position: relative;
             background: url('./img/history1.jpg') center/cover no-repeat;
@@ -84,7 +84,7 @@
             overflow: hidden;
         }
 
-        /* 보라색 배경 제거 후 pure 블러 효과만 적용하는 레이어 */
+        /* 배경 흐림 효과를 2px로 줄여 원본이 덜 흐리게 보이도록 조정 */
         .page-header::before {
             content: '';
             position: absolute;
@@ -92,13 +92,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            backdrop-filter: blur(6px); /* 흐림 효과만 유지 */
+            backdrop-filter: blur(2px);
             z-index: 1;
         }
 
         .page-header-content {
             position: relative;
-            z-index: 2; /* 텍스트를 배경 위로 레이어링 */
+            z-index: 2;
         }
 
         .page-header h1 {
@@ -204,7 +204,7 @@
         </div>
     </header>
 
-    <!-- 페이지 타이틀 (history1.jpg 전용 블러 배경 적용) -->
+    <!-- 페이지 타이틀 -->
     <section class="page-header">
         <div class="page-header-content">
             <h1>WE ARE ANYANG</h1>
@@ -215,14 +215,12 @@
     <!-- 소개 본문 -->
     <main class="about-content">
         
-        <!-- 섹션 1: 제작자의 이야기 -->
         <div class="section-block">
             <h2>💜 내가 수보라빛에 물든 이유</h2>
             <p>이곳은 제가 처음 FC안양의 경기를 직관했던 날 느꼈던 뜨거운 열기를 기록하기 위해 만든 개인 아카이브입니다. 안양 종합운동장 특유의 가변석에서 뿜어져 나오는 응원 소리와 팬들의 열정은 저를 단숨에 매료시켰습니다.</p>
             <p>매 주말 경기장을 찾으며 쌓인 직관의 추억, 선수들의 투지, 그리고 아사달에서의 즐거운 뒷풀이까지. 이 사이트를 통해 저와 같은 안양 팬들이 공감하고 즐길 수 있는 정보를 나누고 싶습니다.</p>
         </div>
 
-        <!-- 섹션 2: FC안양 히스토리 -->
         <div class="section-block">
             <h2>🛡️ FC안양 (FC ANYANG) 히스토리</h2>
             <p>FC안양은 2013년 안양 시민들의 끈질긴 노력과 축구에 대한 열망으로 창단된 시민구단입니다. '시민, 낙원, 행복'이라는 슬로건 아래 안양 종합운동장을 누비고 있습니다.</p>
