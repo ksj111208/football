@@ -75,9 +75,9 @@
             color: var(--anyang-gold);
         }
 
-        /* 콘텐츠 */
+        /* 컨테이너 */
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 3.5rem auto;
             padding: 0 1.5rem;
         }
@@ -97,6 +97,46 @@
             color: var(--text-gray);
         }
 
+        /* 좌석 선택 카테고리 그리드 */
+        .seat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .seat-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 4px solid var(--anyang-gold);
+        }
+
+        .seat-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .seat-badge {
+            font-size: 0.75rem;
+            background-color: var(--anyang-purple);
+            color: var(--anyang-gold);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .seat-card p {
+            color: #C0C0C0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 상세 정보 섹션 */
         .info-section {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -108,10 +148,12 @@
         .info-section h2 {
             font-size: 1.4rem;
             color: var(--anyang-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.8rem;
         }
 
         .info-list {
@@ -120,9 +162,10 @@
 
         .info-list li {
             position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.8rem;
+            padding-left: 1.4rem;
+            margin-bottom: 0.9rem;
             color: #E0E0E0;
+            line-height: 1.6;
         }
 
         .info-list li::before {
@@ -131,6 +174,12 @@
             left: 0;
             color: var(--anyang-gold);
             font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .highlight-text {
+            color: var(--anyang-gold);
+            font-weight: 600;
         }
 
         /* 푸터 */
@@ -147,11 +196,13 @@
         @media (max-width: 768px) {
             .nav-menu { display: none; }
             .page-header h1 { font-size: 1.8rem; }
+            .info-section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 보라빛 라운지</a>
@@ -166,27 +217,56 @@
 
     <main class="container">
         <div class="page-header">
-            <h1>🏟️ 안양 종합운동장 정보</h1>
-            <p>처음 방문하는 팬들을 위한 직관 안내 가이드</p>
+            <h1>🏟️ 안양 종합운동장 가이드</h1>
+            <p>좌석 배치와 시야 선택부터 티켓 예매, 교통 안내까지 완벽 정리</p>
         </div>
 
+        <!-- 주요 구역별 시야 가이드 -->
+        <h2 style="font-size: 1.4rem; color: var(--anyang-gold); margin-bottom: 1.2rem;">📍 구역별 좌석 특징 & 시야 추천</h2>
+        <div class="seat-grid">
+            <div class="seat-card">
+                <h3>가변석 (N석) <span class="seat-badge">열정 응원</span></h3>
+                <p>피치와 인접해 선수들의 거친 숨소리와 박진감을 바로 앞에서 직관할 수 있는 안양 최고 인기 구역입니다.</p>
+            </div>
+
+            <div class="seat-card">
+                <h3>일반석 (E석) <span class="seat-badge">전체 시야</span></h3>
+                <p>경기 전체적인 전술 흐름과 경기장 전체 분위기를 편안하게 관람할 수 있어 초보 직관러에게 추천합니다.</p>
+            </div>
+
+            <div class="seat-card">
+                <h3>프리미엄석 (W석) <span class="seat-badge">쾌적 관람</span></h3>
+                <p>벤치 및 선수단 출입구와 가까워 현장감이 높으며 지붕이 있어 날씨 영향 없이 쾌적하게 관람 가능합니다.</p>
+            </div>
+
+            <div class="seat-card">
+                <h3>원정석 (S석) <span class="seat-badge">원정 팬 구역</span></h3>
+                <p>원정팀 응원단을 위한 구역으로 별도 동선을 통해 안전하고 편리하게 이용하실 수 있습니다.</p>
+            </div>
+        </div>
+
+        <!-- 티켓 예매 & 경기장 이용 안내 -->
         <div class="info-section">
-            <h2>🟣 가변석(N석) 이용 팁</h2>
+            <h2>🎟️ 티켓 예매 및 입장 안내</h2>
             <ul class="info-list">
-                <li>피치와 매우 가까워 선수들의 숨소리까지 느껴지는 명당 자리입니다.</li>
-                <li>서포팅 공간과 가까워 현장의 열기를 온전히 느끼기 좋습니다.</li>
+                <li><span class="highlight-text">온라인 예매:</span> 공식 예매처(티켓링크)를 통해 경기 수일 전부터 사전 예매가 가능합니다.</li>
+                <li><span class="highlight-text">현장 발권:</span> 경기 시작 2시간 전부터 운동장 매표소에서 현장 티켓 수령 및 구매가 진행됩니다.</li>
+                <li><span class="highlight-text">입장 시간:</span> 쾌적한 관람을 위해 경기 시작 <span class="highlight-text">1시간~1시간 30분 전</span> 입장을 권장합니다.</li>
             </ul>
         </div>
 
+        <!-- 대중교통 및 주차 안내 -->
         <div class="info-section">
-            <h2>🚌 대중교통 안내</h2>
+            <h2>🚌 대중교통 & 주차 안내</h2>
             <ul class="info-list">
-                <li><b>지하철:</b> 4호선 범계역 / 1호선 안양역 하차 후 시내버스 환승</li>
-                <li><b>버스:</b> 안양 종합운동장 정류장 하차 시 도보 2분</li>
+                <li><span class="highlight-text">지하철 4호선 (범계역):</span> 1번 출구 버스정류장에서 <span class="highlight-text">5-2번, 60번</span> 버스 탑승 후 '안양종합운동장' 하차 (약 10분 소요)</li>
+                <li><span class="highlight-text">지하철 1호선 (안양역):</span> 1번 출구 건너편에서 <span class="highlight-text">8번, 8-1번, 9번</span> 버스 탑승 후 하차 (약 15분 소요)</li>
+                <li><span class="highlight-text">자차 / 주차:</span> 경기 당일 종합운동장 내 주차장이 혼잡할 수 있으니 대중교통 이용을 적극 권장합니다.</li>
             </ul>
         </div>
     </main>
 
+    <!-- 푸터 -->
     <footer>
         <p>&copy; 2026 보라빛 라운지. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
