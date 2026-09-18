@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>갤러리 - 보라빛 라운지</title>
+    <title>갤러리 - 수카바티 라운지</title>
     <style>
         :root {
             --anyang-purple: #3A0066;
@@ -19,7 +19,6 @@
         body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
 
-        /* 내비게이션 바 */
         header {
             background-color: rgba(20, 10, 35, 0.95);
             position: sticky; top: 0; z-index: 1000;
@@ -36,13 +35,11 @@
         .nav-menu a { font-weight: 600; transition: color 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: var(--anyang-gold); }
 
-        /* 메인 컨테이너 */
         .container { max-width: 1100px; margin: 3.5rem auto; padding: 0 1.5rem; }
         .page-header { text-align: center; margin-bottom: 2.5rem; }
         .page-header h1 { font-size: 2.2rem; color: var(--anyang-gold); margin-bottom: 0.5rem; }
         .page-header p { color: var(--text-gray); }
 
-        /* 카테고리 필터 버튼 */
         .filter-group {
             display: flex; justify-content: center; gap: 0.8rem;
             margin-bottom: 2.5rem; flex-wrap: wrap;
@@ -58,7 +55,6 @@
             border-color: var(--anyang-gold);
         }
 
-        /* 갤러리 그리드 */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -87,7 +83,6 @@
         .gallery-info h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text-white); }
         .gallery-info p { font-size: 0.85rem; color: var(--text-gray); }
 
-        /* 푸터 */
         footer {
             background-color: #0A0A0A; text-align: center; padding: 2rem;
             color: var(--text-gray); font-size: 0.85rem; margin-top: 4rem;
@@ -98,10 +93,9 @@
 </head>
 <body>
 
-    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">🟣 보라빛 라운지</a>
+            <a href="index.html" class="logo">🟣 수카바티 라운지</a>
             <ul class="nav-menu">
                 <li><a href="about.html">보라빛 히스토리움</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
@@ -117,7 +111,6 @@
             <p>보라빛으로 물든 경기장의 순간들과 뜨거운 서포팅 기록</p>
         </div>
 
-        <!-- 필터 버튼 -->
         <div class="filter-group">
             <button class="filter-btn active">전체보기</button>
             <button class="filter-btn">🏟️ 경기장 시야</button>
@@ -125,9 +118,7 @@
             <button class="filter-btn">⚽ 승리 세레머니</button>
         </div>
 
-        <!-- 갤러리 카드 그리드 -->
         <div class="gallery-grid">
-            <!-- N석 사진 카드 -->
             <div class="gallery-item">
                 <img src="./img/n석.jpg" alt="N석 가변석 응원 현장" class="gallery-img">
                 <div class="gallery-info">
@@ -137,7 +128,6 @@
                 </div>
             </div>
 
-            <!-- 서포터즈석 사진 카드 (기존 일반석에서 변경됨) -->
             <div class="gallery-item">
                 <img src="./img/서포터즈석.jpg" alt="서포터즈석 현장" class="gallery-img">
                 <div class="gallery-info">
@@ -147,7 +137,6 @@
                 </div>
             </div>
 
-            <!-- 세레머니 사진 카드 -->
             <div class="gallery-item">
                 <img src="./img/win.jpg" alt="경기 직후 세레머니" class="gallery-img">
                 <div class="gallery-info">
@@ -159,9 +148,8 @@
         </div>
     </main>
 
-    <!-- 푸터 -->
     <footer>
-        <p>&copy; 2026 보라빛 라운지. All rights reserved.</p>
+        <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
     </footer>
 
