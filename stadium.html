@@ -84,7 +84,7 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .page-header h1 {
@@ -95,6 +95,17 @@
 
         .page-header p {
             color: var(--text-gray);
+        }
+
+        /* 경기장 이미지 영역 */
+        .stadium-hero-img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         /* 좌석 선택 카테고리 그리드 */
@@ -221,27 +232,30 @@
             <p>좌석 배치와 시야 선택부터 티켓 예매, 교통 안내까지 완벽 정리</p>
         </div>
 
+        <!-- 경기장 메인 대표 이미지 -->
+        <img src="./img/stadium1.jpg" alt="안양 종합운동장 전경" class="stadium-hero-img">
+
         <!-- 주요 구역별 시야 가이드 -->
         <h2 style="font-size: 1.4rem; color: var(--anyang-gold); margin-bottom: 1.2rem;">📍 구역별 좌석 특징 & 시야 추천</h2>
         <div class="seat-grid">
             <div class="seat-card">
-                <h3>가변석 (N석) <span class="seat-badge">열정 응원</span></h3>
-                <p>피치와 인접해 선수들의 거친 숨소리와 박진감을 바로 앞에서 직관할 수 있는 안양 최고 인기 구역입니다.</p>
+                <h3>서포터즈석 <span class="seat-badge">열정 응원</span></h3>
+                <p>안양의 열혈 서포터즈와 함께 뜨거운 깃발 퍼포먼스와 응원가를 열정적으로 부르며 직관할 수 있는 구역입니다.</p>
             </div>
 
             <div class="seat-card">
-                <h3>일반석 (E석) <span class="seat-badge">전체 시야</span></h3>
-                <p>경기 전체적인 전술 흐름과 경기장 전체 분위기를 편안하게 관람할 수 있어 초보 직관러에게 추천합니다.</p>
+                <h3>퍼스트스탠딩석 <span class="seat-badge">현장감 최상</span></h3>
+                <p>피치와 최단 거리에 위치해 서서 경기를 관람하며 선수들의 터치라인 호흡을 가장 생생하게 느낄 수 있습니다.</p>
             </div>
 
             <div class="seat-card">
-                <h3>프리미엄석 (W석) <span class="seat-badge">쾌적 관람</span></h3>
-                <p>벤치 및 선수단 출입구와 가까워 현장감이 높으며 지붕이 있어 날씨 영향 없이 쾌적하게 관람 가능합니다.</p>
+                <h3>일반석 (E/W석) <span class="seat-badge">전체 시야</span></h3>
+                <p>경기 전체적인 전술 흐름과 경기장 분위기를 한눈에 조망하며 편안하게 관람할 수 있어 초보 직관러에게 추천합니다.</p>
             </div>
 
             <div class="seat-card">
                 <h3>원정석 (S석) <span class="seat-badge">원정 팬 구역</span></h3>
-                <p>원정팀 응원단을 위한 구역으로 별도 동선을 통해 안전하고 편리하게 이용하실 수 있습니다.</p>
+                <p>원정팀 응원단을 위한 전용 구역으로 별도의 이동 동선을 통해 안전하고 편리하게 이용하실 수 있습니다.</p>
             </div>
         </div>
 
