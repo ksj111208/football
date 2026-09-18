@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수카바티 라운지</title>
+    <title>갤러리 - 수카바티 라운지</title>
     <style>
         :root {
             --anyang-purple: #3A0066;
@@ -15,98 +15,80 @@
             --text-gray: #A0A0A0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
 
         header {
             background-color: rgba(20, 10, 35, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
         }
-
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 1rem 2rem;
         }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--anyang-gold); letter-spacing: 1px; }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-menu a { font-weight: 600; transition: color 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--anyang-gold); }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--anyang-gold);
-            letter-spacing: 1px;
+        .container { max-width: 1100px; margin: 3.5rem auto; padding: 0 1.5rem; }
+        .page-header { text-align: center; margin-bottom: 2.5rem; }
+        .page-header h1 { font-size: 2.2rem; color: var(--anyang-gold); margin-bottom: 0.5rem; }
+        .page-header p { color: var(--text-gray); }
+
+        .filter-group {
+            display: flex; justify-content: center; gap: 0.8rem;
+            margin-bottom: 2.5rem; flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: var(--card-bg); color: var(--text-white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--anyang-purple); color: var(--anyang-gold);
+            border-color: var(--anyang-gold);
         }
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
-
-        .nav-menu a {
-            font-weight: 600;
-            transition: color 0.3s;
+        .gallery-item {
+            background-color: var(--card-bg); border-radius: 12px;
+            overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--anyang-gold);
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--anyang-gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
-
-        .hero-section {
-            text-align: center;
-            padding: 5rem 1.5rem;
-            background: linear-gradient(180deg, rgba(58, 0, 102, 0.4) 0%, rgba(18, 18, 18, 1) 100%);
+        .gallery-img {
+            width: 100%; height: 220px;
+            object-fit: cover; display: block;
+            background-color: #2A2A3A;
         }
-
-        .hero-section h1 {
-            font-size: 2.8rem;
-            color: var(--anyang-gold);
-            margin-bottom: 1rem;
+        .gallery-info { padding: 1.2rem; }
+        .gallery-tag {
+            font-size: 0.75rem; color: var(--anyang-gold);
+            font-weight: 700; margin-bottom: 0.4rem; display: inline-block;
         }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            color: #D1D1D1;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
+        .gallery-info h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text-white); }
+        .gallery-info p { font-size: 0.85rem; color: var(--text-gray); }
 
         footer {
-            background-color: #0A0A0A;
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            margin-top: 4rem;
+            background-color: #0A0A0A; text-align: center; padding: 2rem;
+            color: var(--text-gray); font-size: 0.85rem; margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero-section h1 { font-size: 2rem; }
-        }
+        @media (max-width: 768px) { .nav-menu { display: none; } }
     </style>
 </head>
 <body>
@@ -118,16 +100,52 @@
                 <li><a href="about.html">보라빛 히스토리움</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
                 <li><a href="food.html">근처 맛집 추천</a></li>
-                <li><a href="gallery.html">갤러리</a></li>
+                <li><a href="gallery.html" class="active">갤러리</a></li>
             </ul>
         </div>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <h1>🟣 수카바티 라운지에 오신 것을 환영합니다</h1>
-            <p>안양 축구팬들을 위한 가이드, 경기장 시야 정보부터 근처 추천 맛집까지 한곳에서 확인하세요.</p>
-        </section>
+    <main class="container">
+        <div class="page-header">
+            <h1>📸 직관 포토 갤러리</h1>
+            <p>보라빛으로 물든 경기장의 순간들과 뜨거운 서포팅 기록</p>
+        </div>
+
+        <div class="filter-group">
+            <button class="filter-btn active">전체보기</button>
+            <button class="filter-btn">🏟️ 경기장 시야</button>
+            <button class="filter-btn">💜 서포터즈 응원</button>
+            <button class="filter-btn">⚽ 승리 세레머니</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="./img/n석.jpg" alt="N석 가변석 응원 현장" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#N석 #가변석</span>
+                    <h3>N석 가변석 뜨거운 응원 열기</h3>
+                    <p>피치와 가장 가까운 곳에서 선수들과 함께 호흡하는 공간</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="./img/서포터즈석.jpg" alt="서포터즈석 현장" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#서포터즈석 #열정응원</span>
+                    <h3>서포터즈석 뜨거운 응원 현장</h3>
+                    <p>깃발 퍼포먼스와 응원가로 경기장의 열기를 더하는 서포터즈 구역</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="./img/win.jpg" alt="경기 직후 세레머니" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#승리 #세레머니</span>
+                    <h3>경기 직후 선수단 인사 & 승리의 순간</h3>
+                    <p>승리 후 팬들과 선수단이 하나 되는 보라빛 감동의 순간</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
