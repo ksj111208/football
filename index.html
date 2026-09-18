@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-N-Y-A-N-G Archive - FC안양 팬 아카이브</title>
+    <title>수카바티 라운지 - FC안양 팬 아카이브</title>
     <style>
         :root {
-            --anyang-purple: #4B0082;
-            --anyang-light-purple: #6A5ACD;
+            --anyang-purple: #3A0066;
+            --anyang-light-purple: #5C469C;
             --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
@@ -35,11 +35,12 @@
 
         /* 내비게이션 바 */
         header {
-            background-color: rgba(75, 0, 130, 0.95);
+            background-color: rgba(20, 10, 35, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .nav-container {
@@ -51,6 +52,7 @@
             padding: 1rem 2rem;
         }
 
+        /* 수카바티 라운지 로고 */
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -73,7 +75,7 @@
             color: var(--anyang-gold);
         }
 
-        /* 히어로 섹션 (모바일 배경 이미지 최적화) */
+        /* 히어로 섹션 (모바일 대응 main2.jpg 흐린 배경) */
         .hero {
             position: relative;
             padding: 6rem 1rem;
@@ -83,7 +85,6 @@
             background-color: #0A0A0A;
         }
 
-        /* 모바일에서도 확실하게 출력되는 하드웨어 가속 배경 흐림 효과 */
         .hero::before {
             content: '';
             position: absolute;
@@ -92,10 +93,10 @@
             width: 100%;
             height: 100%;
             background: url('./img/main2.jpg') center/cover no-repeat;
-            filter: blur(6px) brightness(0.45); /* 모바일 지원 강제 블러 및 어두움 처리 */
-            transform: scale(1.1); /* 블러 처리 시 테두리 흰선 방지 */
+            filter: blur(6px) brightness(0.4);
+            transform: scale(1.1);
             z-index: 1;
-            -webkit-filter: blur(6px) brightness(0.45); /* Safari/iOS 지원 */
+            -webkit-filter: blur(6px) brightness(0.4);
         }
 
         .hero-content {
@@ -111,7 +112,7 @@
             margin: 0 auto 1.5rem auto;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
             border: 2px solid rgba(255, 215, 0, 0.3);
         }
 
@@ -137,7 +138,7 @@
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
         }
 
-        /* 메인 링크 카드 영역 (가로 배치 + 반응형) */
+        /* 메인 링크 카드 영역 (4개 가로 나열) */
         .cards-container {
             max-width: 1300px;
             margin: 4rem auto;
@@ -207,23 +208,22 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 태블릿 반응형 (1024px 이하) */
+        /* 반응형 설정 */
         @media (max-width: 1024px) {
             .cards-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* 모바일 최적화 반응형 (768px 이하) */
         @media (max-width: 768px) {
             .nav-container {
                 padding: 1rem;
             }
             .nav-menu {
-                display: none; /* 모바일에서는 메뉴 숨김 */
+                display: none;
             }
             .hero {
-                padding: 3.5rem 1rem; /* 모바일 화면에 맞춘 높이 조절 */
+                padding: 3.5rem 1rem;
             }
             .hero-img-container {
                 max-width: 90%;
@@ -235,7 +235,7 @@
                 font-size: 1rem;
             }
             .cards-container {
-                grid-template-columns: 1fr; /* 모바일에서는 1열 세로 정렬 */
+                grid-template-columns: 1fr;
                 padding: 0 1.2rem;
                 margin: 2.5rem auto;
             }
@@ -247,9 +247,9 @@
     <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
+            <a href="index.html" class="logo">🟣 수카바티 라운지</a>
             <ul class="nav-menu">
-                <li><a href="about.html">A-N-Y-A-N-G</a></li>
+                <li><a href="about.html">보라빛 히스토리움</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
                 <li><a href="food.html">근처 맛집 추천</a></li>
                 <li><a href="gallery.html">갤러리</a></li>
@@ -257,7 +257,7 @@
         </div>
     </header>
 
-    <!-- 히어로 섹션 (모바일 대응 main2.jpg 배경 적용) -->
+    <!-- 히어로 섹션 -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-img-container">
@@ -275,7 +275,7 @@
         <div class="card">
             <div>
                 <div class="card-icon">🟣</div>
-                <h2>A-N-Y-A-N-G</h2>
+                <h2>보라빛 히스토리움</h2>
                 <p>내가 수보라빛에 물든 이유와 FC안양의 역사 이야기</p>
             </div>
             <a href="about.html" class="card-btn">자세히 보기</a>
@@ -311,8 +311,8 @@
 
     <!-- 푸터 -->
     <footer>
-        <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
-        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>
+        <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
     </footer>
 
 </body>
