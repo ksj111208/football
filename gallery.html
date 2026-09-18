@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갤러리 - 보라빛 라운지</title>
+    <style>
+        :root {
+            --anyang-purple: #3A0066;
+            --anyang-light-purple: #5C469C;
+            --anyang-gold: #FFD700;
+            --bg-dark: #121212;
+            --card-bg: #1E1E2E;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-white); }
+        a { text-decoration: none; color: inherit; }
+
+        header {
+            background-color: rgba(20, 10, 35, 0.95);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--anyang-gold); }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--anyang-gold); }
+
+        .container { max-width: 1100px; margin: 3.5rem auto; padding: 0 1.5rem; }
+        .page-header { text-align: center; margin-bottom: 2.5rem; }
+        .page-header h1 { font-size: 2.2rem; color: var(--anyang-gold); margin-bottom: 0.5rem; }
+        .page-header p { color: var(--text-gray); }
+
+        /* 카테고리 필터 버튼 */
+        .filter-group {
+            display: flex; justify-content: center; gap: 0.8rem;
+            margin-bottom: 2.5rem; flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: var(--card-bg); color: var(--text-white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--anyang-purple); color: var(--anyang-gold);
+            border-color: var(--anyang-gold);
+        }
+
+        /* 갤러리 그리드 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            background-color: var(--card-bg); border-radius: 12px;
+            overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--anyang-gold);
+        }
+        .gallery-img {
+            width: 100%; height: 220px;
+            object-fit: cover; display: block;
+            background-color: #2A2A3A; /* 이미지 없을 때 대비 기본 배경 */
+        }
+        .gallery-info { padding: 1.2rem; }
+        .gallery-tag {
+            font-size: 0.75rem; color: var(--anyang-gold);
+            font-weight: 700; margin-bottom: 0.4rem; display: inline-block;
+        }
+        .gallery-info h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .gallery-info p { font-size: 0.85rem; color: var(--text-gray); }
+
+        footer {
+            background-color: #0A0A0A; text-align: center; padding: 2rem;
+            color: var(--text-gray); font-size: 0.85rem; margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @media (max-width: 768px) { .nav-menu { display: none; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🟣 보라빛 라운지</a>
+            <ul class="nav-menu">
+                <li><a href="about.html">보라빛 히스토리움</a></li>
+                <li><a href="stadium.html">경기장 정보</a></li>
+                <li><a href="food.html">근처 맛집 추천</a></li>
+                <li><a href="gallery.html" class="active">갤러리</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>📸 직관 포토 갤러리</h1>
+            <p>보라빛으로 물든 경기장의 순간들과 뜨거운 서포팅 기록</p>
+        </div>
+
+        <!-- 필터 버튼 -->
+        <div class="filter-group">
+            <button class="filter-btn active">전체보기</button>
+            <button class="filter-btn">🏟️ 경기장 시야</button>
+            <button class="filter-btn">💜 서포팅/홍염</button>
+            <button class="filter-btn">⚽ 골/세레머니</button>
+        </div>
+
+        <!-- 갤러리 카드 그리드 -->
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="./img/main1.jpg" alt="N석 가변석 응원 현장" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#가변석 #서포팅</span>
+                    <h3>N석 가변석 뜨거운 응원 열기</h3>
+                    <p>피치와 가장 가까운 곳에서 선수들과 함께 호흡하는 공간</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="./img/main2.jpg" alt="경기장 전경" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#경기장시야 #E석</span>
+                    <h3>E석 일반석에서 바라본 종합운동장</h3>
+                    <p>경기 전경이 한눈에 보이는 한적하고 쾌적한 관람 시야</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="./img/main1.jpg" alt="승리의 순간" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#승리 #세레머니</span>
+                    <h3>경기 직후 선수단 인사 & 만세 삼창</h3>
+                    <p>승리 후 팬들과 선수단이 하나 되는 보라빛 감동의 순간</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 보라빛 라운지. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
+    </footer>
+
+</body>
+</html>
