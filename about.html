@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A-N-Y-A-N-G - FC안양 팬 아카이브</title>
+    <title>보라빛 히스토리움 - 보라빛 라운지</title>
     <style>
-        /* 공통 스타일 */
         :root {
-            --anyang-purple: #4B0082;
-            --anyang-light-purple: #6A5ACD;
+            --anyang-purple: #3A0066;
+            --anyang-light-purple: #5C469C;
             --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
@@ -26,7 +25,7 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-white);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         a {
@@ -36,11 +35,12 @@
 
         /* 내비게이션 바 */
         header {
-            background-color: rgba(75, 0, 130, 0.95);
+            background-color: rgba(20, 10, 35, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .nav-container {
@@ -70,106 +70,55 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover {
+        .nav-menu a:hover,
+        .nav-menu a.active {
             color: var(--anyang-gold);
         }
 
-        /* 서브페이지 헤더 (history1.jpg 적용) */
-        .page-header {
-            position: relative;
-            background: url('./img/history1.jpg') center/cover no-repeat;
-            padding: 5rem 2rem;
+        /* 콘텐츠 영역 */
+        .container {
+            max-width: 850px;
+            margin: 3.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .about-header {
             text-align: center;
-            border-bottom: 4px solid var(--anyang-gold);
-            overflow: hidden;
-        }
-
-        /* 배경 흐림 효과를 2px로 줄여 원본이 덜 흐리게 보이도록 조정 */
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            backdrop-filter: blur(2px);
-            z-index: 1;
-        }
-
-        .page-header-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            color: var(--text-white);
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-        }
-
-        .page-header p {
-            color: var(--anyang-gold);
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
-        }
-
-        /* 본문 콘텐츠 */
-        .about-content {
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-block {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 3rem;
             margin-bottom: 3rem;
-            border-left: 5px solid var(--anyang-gold);
         }
 
-        .section-block h2 {
-            font-size: 1.8rem;
-            color: var(--anyang-light-purple);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .about-header h1 {
+            font-size: 2.2rem;
+            color: var(--anyang-gold);
+            margin-bottom: 0.8rem;
         }
 
-        .section-block p {
+        .about-header p {
             color: var(--text-gray);
             font-size: 1.05rem;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .content-card h2 {
+            color: var(--anyang-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--anyang-light-purple);
+            padding-left: 0.8rem;
+        }
+
+        .content-card p {
+            color: #E0E0E0;
+            font-size: 1rem;
             margin-bottom: 1rem;
             line-height: 1.8;
-        }
-
-        .history-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .history-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text-gray);
-        }
-
-        .history-list li::before {
-            content: '⚽';
-            position: absolute;
-            left: 0;
-            top: 2px;
-            font-size: 0.9rem;
-        }
-
-        .history-list strong {
-            color: var(--text-white);
-            margin-right: 10px;
         }
 
         /* 푸터 */
@@ -179,24 +128,24 @@
             padding: 2rem;
             color: var(--text-gray);
             font-size: 0.85rem;
+            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .section-block { padding: 2rem; }
-            .page-header h1 { font-size: 2rem; }
+            .about-header h1 { font-size: 1.8rem; }
+            .content-card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">🟣 A-N-Y-A-N-G Archive</a>
+            <a href="index.html" class="logo">🟣 보라빛 라운지</a>
             <ul class="nav-menu">
-                <li><a href="about.html" style="color: var(--anyang-gold);">A-N-Y-A-N-G</a></li>
+                <li><a href="about.html" class="active">보라빛 히스토리움</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
                 <li><a href="food.html">근처 맛집 추천</a></li>
                 <li><a href="gallery.html">갤러리</a></li>
@@ -204,43 +153,28 @@
         </div>
     </header>
 
-    <!-- 페이지 타이틀 -->
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1>WE ARE ANYANG</h1>
-            <p>시민과 함께 뛰는 구단, 그리고 나의 보랏빛 이야기</p>
-        </div>
-    </section>
-
-    <!-- 소개 본문 -->
-    <main class="about-content">
-        
-        <div class="section-block">
-            <h2>💜 내가 수보라빛에 물든 이유</h2>
-            <p>이곳은 제가 처음 FC안양의 경기를 직관했던 날 느꼈던 뜨거운 열기를 기록하기 위해 만든 개인 아카이브입니다. 안양 종합운동장 특유의 가변석에서 뿜어져 나오는 응원 소리와 팬들의 열정은 저를 단숨에 매료시켰습니다.</p>
-            <p>매 주말 경기장을 찾으며 쌓인 직관의 추억, 선수들의 투지, 그리고 아사달에서의 즐거운 뒷풀이까지. 이 사이트를 통해 저와 같은 안양 팬들이 공감하고 즐길 수 있는 정보를 나누고 싶습니다.</p>
+    <main class="container">
+        <div class="about-header">
+            <h1>🟣 보라빛 히스토리움</h1>
+            <p>안양이라는 도시와 보라색 유니폼에 담긴 서사</p>
         </div>
 
-        <div class="section-block">
-            <h2>🛡️ FC안양 (FC ANYANG) 히스토리</h2>
-            <p>FC안양은 2013년 안양 시민들의 끈질긴 노력과 축구에 대한 열망으로 창단된 시민구단입니다. '시민, 낙원, 행복'이라는 슬로건 아래 안양 종합운동장을 누비고 있습니다.</p>
-            
-            <ul class="history-list">
-                <li><strong>2013년 2월 2일</strong> FC안양 공식 창단 (안양 시민들의 염원 실현)</li>
-                <li><strong>2024년 11월 2일</strong> K리그2 우승 확정 및 <span style="color: var(--anyang-gold); font-weight: bold;">창단 첫 K리그1(1부) 승격</span></li>
-                <li><strong>2025년 4월 20일</strong> <span style="color: var(--anyang-gold); font-weight: bold;">북패 상대 역사상 첫 승리</span> (숙원의 오피셜 승리)</li>
-                <li><strong>홈 구장</strong> 안양 종합운동장 (아워네이션, Our Nation)</li>
-                <li><strong>서포터즈</strong> A.S.U. RED (안양 서포터즈 연합)</li>
-                <li><strong>상징색</strong> 보라색(Purple) - 꺾이지 않는 안양 시민의 긍지와 자부심을 상징</li>
-            </ul>
+        <div class="content-card">
+            <h2>수보라빛 스토어 & 히스토리</h2>
+            <p>
+                안양 축구는 단순한 스포츠 그 이상의 의미를 갖습니다. 시민들의 자발적인 열망과 노력으로 다시 찾아온 축구의 열기, 
+                그리고 가변석을 가득 채우는 서포터즈의 '수카바티' 함성이 만들어내는 고유한 분위기가 있습니다.
+            </p>
+            <p>
+                '보라빛 라운지'는 안양을 사랑하는 팬들이 한 공간에서 팀의 역사와 직관 팁을 공유하고, 
+                언제든 서로의 추억을 나눌 수 있도록 만든 비공식 팬 아카이브 공간입니다.
+            </p>
         </div>
-
     </main>
 
-    <!-- 하단 정보 -->
     <footer>
-        <p>&copy; 2026 A-N-Y-A-N-G Fan Archive. All rights reserved.</p>
-        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 아카이브입니다.</p>
+        <p>&copy; 2026 보라빛 라운지. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
     </footer>
 
 </body>
