@@ -1,0 +1,415 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+
+    body {
+        background-color: var(--bg-dark);
+        color: var(--text-white);
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* 내비게이션 바 */
+    header {
+        background-color: rgba(20, 10, 35, 0.95);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--anyang-gold);
+        letter-spacing: 1px;
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-menu a {
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+        color: var(--anyang-gold);
+    }
+
+    /* 페이지 헤더 */
+    .page-header {
+        background: linear-gradient(135deg, rgba(58, 0, 102, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
+        padding: 4rem 1rem 3rem;
+        text-align: center;
+        border-bottom: 4px solid var(--anyang-gold);
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+        color: var(--anyang-gold);
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    .page-header p {
+        color: var(--text-white);
+        font-size: 1.05rem;
+    }
+
+    /* 포지션 필터 버튼 */
+    .filter-container {
+        max-width: 1200px;
+        margin: 2.5rem auto 1rem auto;
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        background-color: var(--card-bg);
+        color: var(--text-white);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.6rem 1.4rem;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+        background-color: var(--anyang-gold);
+        color: #121212;
+        border-color: var(--anyang-gold);
+        font-weight: 700;
+    }
+
+    /* 선수 목록 그리드 */
+    .players-container {
+        max-width: 1200px;
+        margin: 2rem auto 5rem auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 2rem;
+    }
+
+    .player-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .player-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--anyang-gold);
+    }
+
+    .player-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        background-color: #252538;
+        overflow: hidden;
+    }
+
+    .player-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        transition: transform 0.3s;
+    }
+
+    .player-card:hover .player-img {
+        transform: scale(1.05);
+    }
+
+    .back-number {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-style: italic;
+    }
+
+    .pos-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .pos-badge.GK { background-color: #E65100; }
+    .pos-badge.DF { background-color: #1E88E5; }
+    .pos-badge.MF { background-color: #43A047; }
+    .pos-badge.FW { background-color: #E53935; }
+
+    .player-info {
+        padding: 1.2rem;
+        text-align: center;
+    }
+
+    .player-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 0.2rem;
+    }
+
+    .player-sub-info {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+    }
+
+    /* 모달 스타일 */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .modal.open {
+        display: flex;
+    }
+
+    .modal-content {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        max-width: 600px;
+        width: 100%;
+        border: 2px solid var(--anyang-gold);
+        padding: 2rem;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 1.8rem;
+        color: var(--text-gray);
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+        color: var(--anyang-gold);
+    }
+
+    .modal-body {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .modal-img {
+        width: 180px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .modal-details h2 {
+        color: var(--anyang-gold);
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-details p {
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: var(--text-white);
+    }
+
+    .modal-details span {
+        color: var(--text-gray);
+    }
+
+    /* 푸터 */
+    footer {
+        background-color: #0A0A0A;
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-gray);
+        font-size: 0.85rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 768px) {
+        .nav-menu { display: none; }
+        .modal-body {
+            flex-direction: column;
+            text-align: center;
+        }
+        .modal-img {
+            width: 140px;
+            height: 170px;
+        }
+    }
+</style>
+
+
+<!-- 상단 내비게이션 -->
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="logo">🟣 수카바티 라운지</a>
+        <ul class="nav-menu">
+            <li><a href="about.html">보라빛 히스토리움</a></li>
+            <li><a href="players.html" class="active">선수단 소개</a></li>
+            <li><a href="stadium.html">경기장 정보</a></li>
+            <li><a href="food.html">근처 맛집 추천</a></li>
+            <li><a href="gallery.html">갤러리</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- 페이지 헤더 -->
+<div class="page-header">
+    <h1>🟣 FC안양 선수단</h1>
+    <p>안양의 승리를 위해 피치 위에서 달리는 자랑스러운 전사들입니다.</p>
+</div>
+
+<!-- 포지션 필터 -->
+<div class="filter-container">
+    <button class="filter-btn active" onclick="filterPlayers('ALL')">전체보기</button>
+    <button class="filter-btn" onclick="filterPlayers('GK')">GK (골키퍼)</button>
+    <button class="filter-btn" onclick="filterPlayers('DF')">DF (수비수)</button>
+    <button class="filter-btn" onclick="filterPlayers('MF')">MF (미드필더)</button>
+    <button class="filter-btn" onclick="filterPlayers('FW')">FW (공격수)</button>
+</div>
+
+<!-- 선수단 그리드 -->
+<main class="players-container" id="playersGrid">
+    <!-- JS로 동적 생성됩니다 -->
+</main>
+
+<!-- 선수 상세 정보 모달 -->
+<div class="modal" id="playerModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-body" id="modalBody">
+            <!-- 모달 내용이 들어가며 dynamic render 됩니다 -->
+        </div>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+    <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
+    <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
+</footer>
+
+<script>
+    // 선수 데이터 샘플 (필요 시 수정 및 추가 가능)
+    const players = [
+        { id: 1, name: "김다솔", number: "1", pos: "GK", birth: "1989.01.04", height: "188cm / 81kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.1+GK" },
+        { id: 2, name: "이창용", number: "4", pos: "DF", birth: "1990.08.27", height: "183cm / 77kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.4+DF" },
+        { id: 3, name: "김영찬", number: "5", pos: "DF", birth: "1993.09.04", height: "189cm / 84kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.5+DF" },
+        { id: 4, name: "김정현", number: "8", pos: "MF", birth: "1993.06.01", height: "185cm / 78kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.8+MF" },
+        { id: 5, name: "야고", number: "10", pos: "FW", birth: "1999.02.15", height: "175cm / 70kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.10+FW" },
+        { id: 6, name: "유정완", number: "11", pos: "FW", birth: "1996.04.05", height: "178cm / 72kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.11+FW" },
+        { id: 7, name: "홍창범", number: "14", pos: "MF", birth: "1998.07.08", height: "174cm / 68kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.14+MF" },
+        { id: 8, name: "김동진", number: "22", pos: "DF", birth: "1992.12.28", height: "176cm / 70kg", img: "https://via.placeholder.com/300x380/3A0066/FFFFFF?text=NO.22+DF" }
+    ];
+
+    const grid = document.getElementById('playersGrid');
+
+    function renderPlayers(data) {
+        grid.innerHTML = '';
+        data.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'player-card';
+            card.onclick = () => openModal(p);
+            card.innerHTML = `
+                <div class="player-img-wrapper">
+                    <span class="back-number">${p.number}</span>
+                    <img src="${p.img}" alt="${p.name}" class="player-img">
+                    <span class="pos-badge ${p.pos}">${p.pos}</span>
+                </div>
+                <div class="player-info">
+                    <div class="player-name">${p.name}</div>
+                    <div class="player-sub-info">No.${p.number} · ${p.pos}</div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function filterPlayers(pos) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        if (pos === 'ALL') {
+            renderPlayers(players);
+        } else {
+            const filtered = players.filter(p => p.pos === pos);
+            renderPlayers(filtered);
+        }
+    }
+
+    function openModal(p) {
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+            <img src="${p.img}" alt="${p.name}" class="modal-img">
+            <div class="modal-details">
+                <h2>No.${p.number} ${p.name}</h2>
+                <p><span>포지션:</span> ${p.pos}</p>
+                <p><span>생년월일:</span> ${p.birth}</p>
+                <p><span>체격조건:</span> ${p.height}</p>
+                <p style="margin-top: 1rem; color: var(--anyang-gold); font-size: 0.85rem;">* 이미지 및 선수 프로필 정보는 수정/업데이트할 수 있습니다.</p>
+            </div>
+        `;
+        document.getElementById('playerModal').classList.add('open');
+    }
+
+    function closeModal() {
+        document.getElementById('playerModal').classList.remove('open');
+    }
+
+    // 초기 실행
+    renderPlayers(players);
+</script>
