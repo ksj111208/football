@@ -155,6 +155,96 @@
             gap: 1.5rem;
         }
 
+        /* 베스트 11 전용 그라운드 스타일 */
+        .best11-container {
+            background: linear-gradient(135deg, #1b3b1b 0%, #0d220d 100%);
+            border: 2px solid var(--anyang-gold);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .best11-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .formation-line {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .formation-line:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 포지션별 블록 */
+        .position-slot {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .slot-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--anyang-gold);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        /* 주전/후보 그룹 묶음 */
+        .slot-players {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        /* 후보진 텍스트 박스 전용 스타일 */
+        .sub-name-box {
+            background: rgba(20, 20, 30, 0.85);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+            width: 100%;
+            max-width: 160px;
+        }
+
+        .sub-label {
+            font-size: 0.7rem;
+            color: var(--anyang-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.1rem;
+        }
+
+        .sub-names {
+            font-size: 0.9rem;
+            color: var(--text-white);
+            font-weight: 600;
+            word-break: keep-all;
+        }
+
         /* 카드 디자인 */
         .player-card {
             background-color: var(--card-bg);
@@ -169,6 +259,18 @@
             transform: translateY(-8px);
             border-color: var(--anyang-gold);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 베스트 11 주전 카드 */
+        .best11-card {
+            width: 150px;
+            background-color: rgba(30, 30, 46, 0.95);
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .best11-card .player-img-box {
+            height: 170px;
         }
 
         /* 스태프 및 주장단 카드 강조 스타일 */
@@ -219,6 +321,13 @@
             transition: all 0.3s ease;
         }
 
+        .best11-card .back-number {
+            font-size: 1.2rem;
+            top: 6px;
+            right: 6px;
+            padding: 1px 6px;
+        }
+
         .player-card:hover .back-number {
             color: var(--anyang-gold);
             border-color: var(--anyang-gold);
@@ -227,8 +336,12 @@
         }
 
         .player-info {
-            padding: 1.2rem;
+            padding: 1rem;
             text-align: center;
+        }
+
+        .best11-card .player-info {
+            padding: 0.6rem;
         }
 
         .player-position {
@@ -258,6 +371,11 @@
             margin-bottom: 0.5rem;
         }
 
+        .best11-card .player-name {
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+        }
+
         /* 푸터 */
         footer {
             background-color: #0A0A0A;
@@ -269,6 +387,12 @@
         }
 
         /* 반응형 설정 */
+        @media (max-width: 1024px) {
+            .formation-line {
+                gap: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 padding: 1rem;
@@ -326,6 +450,7 @@
     <!-- 포지션 필터 -->
     <div class="filter-container">
         <button class="filter-btn active" onclick="filterPosition(event, 'all')">전체보기</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'best11')">BEST 11</button>
         <button class="filter-btn" onclick="filterPosition(event, 'staff')">코칭스태프</button>
         <button class="filter-btn" onclick="filterPosition(event, 'captain')">주장단</button>
         <button class="filter-btn" onclick="filterPosition(event, 'gk')">GK</button>
@@ -336,6 +461,183 @@
 
     <!-- 선수단 및 코칭스태프 목록 섹션 -->
     <main class="players-section">
+
+        <!-- BEST 11 SECTION (전체보기 시 숨김 처리됨) -->
+        <div class="position-group" data-position="best11" style="display: none;">
+            <h2 class="position-title">🌟 FC ANYANG BEST 11 & SQUAD (4-3-3)</h2>
+            <div class="best11-container">
+                
+                <!-- FW 라인 -->
+                <div class="formation-line">
+                    <!-- LW -->
+                    <div class="position-slot">
+                        <span class="slot-title">LW</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/최건주.jpg" alt="최건주"><span class="back-number">27</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">최건주</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">유키치, 채현우</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ST -->
+                    <div class="position-slot">
+                        <span class="slot-title">ST</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/엘쿠라노.jpg" alt="엘쿠라노"><span class="back-number">9</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">엘쿠라노</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">블레이즈, 김운</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RW -->
+                    <div class="position-slot">
+                        <span class="slot-title">RW</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/아일톤.jpg" alt="아일톤"><span class="back-number">11</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">아일톤</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">김강, 박정훈</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MF 라인 -->
+                <div class="formation-line">
+                    <!-- LCM -->
+                    <div class="position-slot">
+                        <span class="slot-title">LCM</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/크네제비치.jpg" alt="크네제비치"><span class="back-number">18</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">크네제비치</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">한가람</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CDM -->
+                    <div class="position-slot">
+                        <span class="slot-title">CDM</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/김정현.jpg" alt="김정현"><span class="back-number">8</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">김정현</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">이진용</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RCM -->
+                    <div class="position-slot">
+                        <span class="slot-title">RCM</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/마테우스.jpg" alt="마테우스"><span class="back-number">7</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">마테우스</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">김보경, 문성우</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DF 라인 -->
+                <div class="formation-line">
+                    <!-- LB -->
+                    <div class="position-slot">
+                        <span class="slot-title">LB</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/김동진.jpg" alt="김동진"><span class="back-number">22</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">김동진</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">김재현</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CB (1) -->
+                    <div class="position-slot">
+                        <span class="slot-title">CB</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/이창용.jpg" alt="이창용"><span class="back-number">4</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">이창용</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">대니바커, 김영찬</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CB (2) -->
+                    <div class="position-slot">
+                        <span class="slot-title">CB</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/권경원.jpg" alt="권경원"><span class="back-number">21</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">권경원</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">김지훈</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RB -->
+                    <div class="position-slot">
+                        <span class="slot-title">RB</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/이태희.jpg" alt="이태희"><span class="back-number">32</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">이태희</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">강지훈, 주현우</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GK 라인 -->
+                <div class="formation-line">
+                    <div class="position-slot">
+                        <span class="slot-title">GK</span>
+                        <div class="slot-players">
+                            <div class="player-card best11-card">
+                                <div class="player-img-box"><img src="./img/김정훈.jpg" alt="김정훈"><span class="back-number">23</span></div>
+                                <div class="player-info"><div class="player-position">주전</div><div class="player-name">김정훈</div></div>
+                            </div>
+                            <div class="sub-name-box">
+                                <div class="sub-label">후보</div>
+                                <div class="sub-names">김다솔</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <!-- COACHING STAFF -->
         <div class="position-group" data-position="staff">
@@ -880,10 +1182,19 @@
 
             const groups = document.querySelectorAll('.position-group');
             groups.forEach(group => {
-                if (pos === 'all' || group.getAttribute('data-position') === pos) {
-                    group.style.display = 'block';
+                const groupPos = group.getAttribute('data-position');
+                if (pos === 'all') {
+                    if (groupPos === 'best11') {
+                        group.style.display = 'none';
+                    } else {
+                        group.style.display = 'block';
+                    }
                 } else {
-                    group.style.display = 'none';
+                    if (groupPos === pos) {
+                        group.style.display = 'block';
+                    } else {
+                        group.style.display = 'none';
+                    }
                 }
             });
         }
