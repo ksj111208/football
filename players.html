@@ -229,12 +229,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .player-details {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            line-height: 1.4;
-        }
-
         /* 푸터 */
         footer {
             background-color: #0A0A0A;
@@ -299,11 +293,11 @@
 
     <!-- 포지션 필터 -->
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterPosition('all')">전체보기</button>
-        <button class="filter-btn" onclick="filterPosition('gk')">GK</button>
-        <button class="filter-btn" onclick="filterPosition('df')">DF</button>
-        <button class="filter-btn" onclick="filterPosition('mf')">MF</button>
-        <button class="filter-btn" onclick="filterPosition('fw')">FW</button>
+        <button class="filter-btn active" onclick="filterPosition(event, 'all')">전체보기</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'gk')">GK</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'df')">DF</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'mf')">MF</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'fw')">FW</button>
     </div>
 
     <!-- 선수단 목록 섹션 -->
@@ -316,7 +310,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/players/gk1.jpg" alt="정민재" onerror="this.src='G'">
+                        <img src="./img/1.jpg" alt="정민재">
                         <span class="back-number">NO.1</span>
                     </div>
                     <div class="player-info">
@@ -327,7 +321,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/players/gk23.jpg" alt="김정훈" onerror="this.src=''">
+                        <img src="./img/23.jpg" alt="김정훈">
                         <span class="back-number">NO.23</span>
                     </div>
                     <div class="player-info">
@@ -338,7 +332,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/players/gk31.jpg" alt="김다솔" onerror="this.src=''">
+                        <img src="./img/31.jpg" alt="김다솔">
                         <span class="back-number">NO.31</span>
                     </div>
                     <div class="player-info">
@@ -349,8 +343,8 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/players/gk32.jpg" alt="김성동" onerror="this.src=''">
-                        <span class="back-number">NO.42</span>
+                        <img src="./img/32.jpg" alt="김성동">
+                        <span class="back-number">NO.32</span>
                     </div>
                     <div class="player-info">
                         <div class="player-position">Goalkeeper</div>
@@ -366,7 +360,6 @@
             <h2 class="position-title">🛡️ DEFENDER</h2>
             <div class="player-grid">
                 <!-- 여기에 DF 선수 카드를 추가하세요 -->
-                
             </div>
         </div>
 
@@ -375,7 +368,6 @@
             <h2 class="position-title">⚙️ MIDFIELDER</h2>
             <div class="player-grid">
                 <!-- 여기에 MF 선수 카드를 추가하세요 -->
-                
             </div>
         </div>
 
@@ -384,7 +376,6 @@
             <h2 class="position-title">⚡ FORWARD</h2>
             <div class="player-grid">
                 <!-- 여기에 FW 선수 카드를 추가하세요 -->
-                
             </div>
         </div>
 
@@ -398,13 +389,13 @@
 
     <!-- 포지션 필터링 스크립트 -->
     <script>
-        function filterPosition(pos) {
-            // 버튼 활성화 클래스 조절
+        function filterPosition(event, pos) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
 
-            // 포지션 그룹 필터링
             const groups = document.querySelectorAll('.position-group');
             groups.forEach(group => {
                 if (pos === 'all' || group.getAttribute('data-position') === pos) {
