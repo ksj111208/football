@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>응원가 - 수카바티 라운지</title>
+    <style>
+        :root {
+            --anyang-purple: #3A0066;
+            --anyang-light-purple: #5C469C;
+            --anyang-gold: #FFD700;
+            --bg-dark: #121212;
+            --card-bg: #1E1E2E;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 내비게이션 바 */
+        header {
+            background-color: rgba(20, 10, 35, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--anyang-gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--anyang-gold);
+        }
+
+        /* 서브페이지 히어로 섹션 */
+        .page-header {
+            background: linear-gradient(135deg, rgba(58, 0, 102, 0.9), rgba(18, 18, 18, 0.95)), url('./img/main2.jpg') center/cover no-repeat;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--anyang-gold);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--anyang-gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        /* 응원가 컨테이너 레이아웃 */
+        .chants-section {
+            max-width: 1200px;
+            margin: 3rem auto 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--anyang-gold);
+            border-bottom: 2px solid var(--anyang-purple);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* 응원가 카드 */
+        .chant-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chant-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--anyang-gold);
+            box-shadow: 0 10px 25px rgba(58, 0, 102, 0.4);
+        }
+
+        .chant-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .chant-lyrics {
+            background: rgba(15, 15, 22, 0.6);
+            border-left: 3px solid var(--anyang-gold);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: #dcdcdc;
+            white-space: pre-line;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .chant-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn-listen {
+            flex: 1;
+            background-color: var(--anyang-purple);
+            color: var(--text-white);
+            border: 1px solid var(--anyang-gold);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-listen:hover {
+            background-color: var(--anyang-light-purple);
+            transform: scale(1.02);
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #0A0A0A;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 반응형 설정 */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            .page-header {
+                padding: 3rem 1rem;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .chants-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🟣 수카바티 라운지</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html">보라빛 히스토리움</a></li>
+                    <li><a href="players.html">선수단 소개</a></li>
+                    <li><a href="chants.html" class="active">응원가</a></li>
+                    <li><a href="stadium.html">경기장 정보</a></li>
+                    <li><a href="food.html">근처 맛집 추천</a></li>
+                    <li><a href="gallery.html">갤러리</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header">
+        <h1>FC ANYANG CHANTS</h1>
+        <p>안양의 승리를 위해 피치 위 울려 퍼지는 뜨거운 함성</p>
+    </section>
+
+    <!-- 응원가 목록 섹션 -->
+    <main class="chants-section">
+        <h2 class="section-title">🎵 FC안양 응원가</h2>
+        
+        <div class="chants-grid">
+
+            <!-- 응원가 1: 부셔버려 -->
+            <div class="chant-card">
+                <div class="chant-title">부셔버려</div>
+                <div class="chant-lyrics">안양! 안양! 부숴버려 ○○!</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+부셔버려" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+            <!-- 응원가 2: 안양폭도맹진가 -->
+            <div class="chant-card">
+                <div class="chant-title">안양폭도맹진가</div>
+                <div class="chant-lyrics">저 ○○의 주검을 보리라 (콜리더 선창)
+
+일곱번째 나팔소리가 천지에 진동할 제
+조심스레 갈고 갈아온 이 칼을 뽑아 드노라
+저주받은 자의 애달픈 혁명이로다 광풍 속으로 달려들 제
+비명속에 나뒹구는 저 원수의 주검을 보리라
+
+성난 얼굴로 돌아보라 피를 흘리게 하라
+성난 이빨을 드러내어라 피를 흘리게 하라
+
+아 우리는 자랑스런 대안양의 청년폭도
+힘차게 맹진하며 골로 가는 청춘이로다
+
+라 라라라 랄라랄라라 랄라라라 랄라라라라
+라 라라라 랄라랄라라 랄라라라 랄라라
+
+우리의 앞길을 가로막을 자 그 누구라더냐
+저 철옹성을 쳐부수고서 힘차게 맹진하노라
+짓밟힌 자들의 처절한 복수리로다 주먹 불끈 쥐고 일어설 제
+화염 속에 불타오르는 저 철옹성의 끝을 보리라
+
+아 그날이 언제이더냐 이를 갈며 기다린 날이
+아 드디어 때는 왔노라 이 검을 휘두를 날이
+
+아 우리는 자랑스런 대안양의 청년폭도
+힘차게 맹진하며 골로 가는 청춘이로다
+
+라 라라라 랄라랄라라 랄라라라 랄라라라라
+라 라라라 랄라랄라라 랄라라라 랄라라</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+안양폭도맹진가" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+            <!-- 응원가 3: 너와 나의 안양 -->
+            <div class="chant-card">
+                <div class="chant-title">너와 나의 안양</div>
+                <div class="chant-lyrics">너와 나의 안양 평생 우리 함께 해
+나를 살아있게 해 우릴 움직이게 해
+
+You Go We Go 평생 우리 함께 해
+나를 살아있게 해 너와 나의 안양
+
+오오 오 오 오오 오오오오오
+오오 오오오오오 오오 오오오오오
+
+You Go We Go 평생 우리 함께 해
+나를 살아있게 해 너와 나의 안양</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+너와+나의+안양" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+            <!-- 응원가 4: GLORY -->
+            <div class="chant-card">
+                <div class="chant-title">GLORY</div>
+                <div class="chant-lyrics">오직 우리에겐 승! 리! 뿐!
+뛰어 힘차게 정상을 향하여!
+외쳐 승리를 위한! 함! 성!
+안양의 영광을 위해</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+GLORY" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+            <!-- 응원가 5: 바보같은 녀석들 -->
+            <div class="chant-card">
+                <div class="chant-title">바보같은 녀석들</div>
+                <div class="chant-lyrics">박차고 일어나 다함께 외쳐라
+승리의 날이 왔다
+우리의 함성이 저 높은 하늘을
+찢어 버릴 때까지
+
+You can be the champion
+Dream on forever
+안양이 없으면 살아갈 수 없는
+바보같은 녀석들</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+바보같은+녀석들" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+            <!-- 응원가 6: BANG -->
+            <div class="chant-card">
+                <div class="chant-title">BANG</div>
+                <div class="chant-lyrics">오~오 오오 오오오 오오
+오오 오오 오~ 오오오
+
+오~오 오오 오오오 오오
+오오 오오 오~ 오오오
+
+오~오 오오 오오오 오오
+오오 오오 오~ 오오오</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/results?search_query=FC안양+BANG" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
+    </footer>
+
+</body>
+</html>
