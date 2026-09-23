@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>수카바티 라운지 - FC안양 팬 커뮤니티</title>
+    <title>수카바티 라운지 - FC안양 팬 아카이브</title>
     <style>
         :root {
             --anyang-purple: #3A0066;
@@ -39,8 +39,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .nav-container {
@@ -52,6 +52,7 @@
             padding: 1rem 2rem;
         }
 
+        /* 수카바티 라운지 로고 */
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -70,167 +71,131 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu a:hover {
             color: var(--anyang-gold);
         }
 
-        /* 히어로 섹션 */
+        /* 히어로 섹션 (모바일 대응 main2.jpg 흐린 배경) */
         .hero {
-            background: linear-gradient(135deg, rgba(58, 0, 102, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%), url('./img/n석.jpg') center/cover no-repeat;
-            padding: 6rem 2rem;
+            position: relative;
+            padding: 6rem 1rem;
             text-align: center;
-            border-bottom: 3px solid var(--anyang-gold);
+            border-bottom: 4px solid var(--anyang-gold);
+            overflow: hidden;
+            background-color: #0A0A0A;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./img/main2.jpg') center/cover no-repeat;
+            filter: blur(6px) brightness(0.4);
+            transform: scale(1.1);
+            z-index: 1;
+            -webkit-filter: blur(6px) brightness(0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* main1.jpg 용기 크기 */
+        .hero-img-container {
+            max-width: 520px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
             color: var(--anyang-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        .hero-text p {
+            font-size: 1.15rem;
             color: var(--text-white);
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
         }
 
-        .hero-btn {
-            display: inline-block;
-            background-color: var(--anyang-gold);
-            color: #121212;
-            font-weight: 800;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-            background-color: #ffe033;
-        }
-
-        /* 주요 링크 카드 섹션 */
-        .main-features {
-            max-width: 1100px;
+        /* 메인 링크 카드 영역 (4개 가로 나열) */
+        .cards-container {
+            max-width: 1300px;
             margin: 4rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .feature-grid {
+            padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
 
-        .feature-card {
+        .card {
             background-color: var(--card-bg);
             border-radius: 12px;
             padding: 2rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
             transition: transform 0.3s, border-color 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--anyang-gold);
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            color: var(--anyang-gold);
-            margin-bottom: 0.8rem;
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-            color: var(--text-gray);
-        }
-
-        /* FC안양 공식 채널 섹션 */
-        .official-channels {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--anyang-gold);
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .section-title p {
-            color: var(--text-gray);
-            font-size: 1rem;
-        }
-
-        .channel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .channel-card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: space-between;
         }
 
-        .channel-card:hover {
+        .card:hover {
             transform: translateY(-8px);
             border-color: var(--anyang-gold);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
-        .channel-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .channel-card h3 {
-            font-size: 1.3rem;
+        .card h2 {
+            font-size: 1.35rem;
             color: var(--text-white);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .channel-card p {
-            font-size: 0.9rem;
+        .card p {
             color: var(--text-gray);
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
-        .btn-link {
+        .card-btn {
             display: inline-block;
+            background-color: var(--anyang-purple);
+            color: var(--text-white);
             padding: 0.6rem 1.2rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--anyang-gold);
-            border: 1px solid var(--anyang-gold);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
         }
 
-        .channel-card:hover .btn-link {
-            background-color: var(--anyang-gold);
-            color: #121212;
+        .card:hover .card-btn {
+            background-color: var(--anyang-light-purple);
         }
 
         /* 푸터 */
@@ -240,13 +205,40 @@
             padding: 2rem;
             color: var(--text-gray);
             font-size: 0.85rem;
-            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* 반응형 설정 */
+        @media (max-width: 1024px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero h1 { font-size: 2.2rem; }
+            .nav-container {
+                padding: 1rem;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .hero {
+                padding: 3.5rem 1rem;
+            }
+            .hero-img-container {
+                max-width: 90%;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                padding: 0 1.2rem;
+                margin: 2.5rem auto;
+            }
         }
     </style>
 </head>
@@ -267,66 +259,55 @@
 
     <!-- 히어로 섹션 -->
     <section class="hero">
-        <h1>수카바티 라운지</h1>
-        <p>보라빛 열정이 숨쉬는 공간, FC안양 팬들을 위한 직관 가이드 & 쉼터</p>
-        <a href="stadium.html" class="hero-btn">경기장 가이드 보기</a>
-    </section>
-
-    <!-- 주요 메뉴 안내 -->
-    <section class="main-features">
-        <div class="feature-grid">
-            <a href="about.html" class="feature-card">
-                <h3>💜 보라빛 히스토리움</h3>
-                <p>안양 축구의 역사와 엠블럼, 응원가 이야기</p>
-            </a>
-            <a href="stadium.html" class="feature-card">
-                <h3>🏟️ 경기장 정보</h3>
-                <p>좌석별 시야 특징 및 오시는 길, 편의시설 안내</p>
-            </a>
-            <a href="food.html" class="feature-card">
-                <h3>🍻 근처 맛집 추천</h3>
-                <p>경기 전후로 찾기 좋은 종합운동장 인근 맛집 가이드</p>
-            </a>
-            <a href="gallery.html" class="feature-card">
-                <h3>📸 포토 갤러리</h3>
-                <p>팬들이 직접 담아낸 열정적인 직관 현장 기록</p>
-            </a>
+        <div class="hero-content">
+            <div class="hero-img-container">
+                <img src="./img/main1.jpg" alt="FC안양 메인 이미지">
+            </div>
+            <div class="hero-text">
+                <h1>온 세상이 보라빛으로 물들 그날까지</h1>
+                <p>FC안양 팬을 위한 직관 정보</p>
+            </div>
         </div>
     </section>
 
-    <!-- FC안양 공식 채널 섹션 (추가된 영역) -->
-    <section class="official-channels">
-        <div class="section-title">
-            <h2>⚽ FC ANYANG OFFICIAL</h2>
-            <p>FC안양의 공식 소식과 생생한 미디어 콘텐츠를 만나보세요</p>
+    <!-- 카드 내비게이션 -->
+    <main class="cards-container">
+        <div class="card">
+            <div>
+                <div class="card-icon">🟣</div>
+                <h2>보라빛 히스토리움</h2>
+                <p>보라빛으로 만든 우리들의 역사</p>
+            </div>
+            <a href="about.html" class="card-btn">자세히 보기</a>
         </div>
 
-        <div class="channel-grid">
-            <!-- 공식 홈페이지 -->
-            <a href="https://www.fc-anyang.com/" target="_blank" class="channel-card homepage">
-                <div class="channel-icon">🌐</div>
-                <h3>공식 홈페이지</h3>
-                <p>구단 소식, 경기 일정, 티켓 예매</p>
-                <span class="btn-link">방문하기 &rarr;</span>
-            </a>
-
-            <!-- 공식 인스타그램 -->
-            <a href="https://www.instagram.com/fcanyang/" target="_blank" class="channel-card instagram">
-                <div class="channel-icon">📸</div>
-                <h3>공식 인스타그램</h3>
-                <p>선수단 비하인드 & 훈련 현장</p>
-                <span class="btn-link">팔로우하기 &rarr;</span>
-            </a>
-
-            <!-- 공식 유튜브 -->
-            <a href="https://www.youtube.com/@FCANYANG" target="_blank" class="channel-card youtube">
-                <div class="channel-icon">▶️</div>
-                <h3>공식 유튜브</h3>
-                <p>경기 하이라이트 & 자체 제작 영상</p>
-                <span class="btn-link">구독하기 &rarr;</span>
-            </a>
+        <div class="card">
+            <div>
+                <div class="card-icon">🏟️</div>
+                <h2>경기장 정보</h2>
+                <p>안양 종합운동장 시야, 가변석 꿀팁 및 대중교통 안내</p>
+            </div>
+            <a href="stadium.html" class="card-btn">정보 확인하기</a>
         </div>
-    </section>
+
+        <div class="card">
+            <div>
+                <div class="card-icon">🍻</div>
+                <h2>근처 맛집 추천</h2>
+                <p>경기 전후로 들르기 좋은 직관 단골 맛집과 뒷풀이 장소</p>
+            </div>
+            <a href="food.html" class="card-btn">맛집 보기</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-icon">📸</div>
+                <h2>직관 갤러리</h2>
+                <p>경기장의 열기가 담긴 직관 포토 모음집</p>
+            </div>
+            <a href="gallery.html" class="card-btn">갤러리 이동</a>
+        </div>
+    </main>
 
     <!-- 푸터 -->
     <footer>
