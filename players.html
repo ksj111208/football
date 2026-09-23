@@ -169,6 +169,12 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
+        /* 주장단 카드 강조 스타일 */
+        .player-card.captain-card {
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            background: linear-gradient(180deg, #251B37 0%, var(--card-bg) 100%);
+        }
+
         .player-img-box {
             position: relative;
             width: 100%;
@@ -192,20 +198,29 @@
             transform: scale(1.05);
         }
 
-        /* 등번호 배지 */
+        /* 등번호 배지 - 가독성 향상 처리 */
         .back-number {
             position: absolute;
             top: 10px;
             right: 12px;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.95);
             font-style: italic;
-            transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
         }
 
         .player-card:hover .back-number {
             color: var(--anyang-gold);
+            border-color: var(--anyang-gold);
+            background: rgba(58, 0, 102, 0.8);
+            transform: scale(1.05);
         }
 
         .player-info {
@@ -220,6 +235,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
+        }
+
+        .captain-role {
+            display: inline-block;
+            background: var(--anyang-gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 0.4rem;
         }
 
         .player-name {
@@ -294,6 +320,7 @@
     <!-- 포지션 필터 -->
     <div class="filter-container">
         <button class="filter-btn active" onclick="filterPosition(event, 'all')">전체보기</button>
+        <button class="filter-btn" onclick="filterPosition(event, 'captain')">주장단</button>
         <button class="filter-btn" onclick="filterPosition(event, 'gk')">GK</button>
         <button class="filter-btn" onclick="filterPosition(event, 'df')">DF</button>
         <button class="filter-btn" onclick="filterPosition(event, 'mf')">MF</button>
@@ -303,6 +330,50 @@
     <!-- 선수단 목록 섹션 -->
     <main class="players-section">
 
+        <!-- CAPTAINS -->
+        <div class="position-group" data-position="captain">
+            <h2 class="position-title">👑 CAPTAINS</h2>
+            <div class="player-grid">
+
+                <div class="player-card captain-card">
+                    <div class="player-img-box">
+                        <img src="./img/이창용.jpg" alt="이창용">
+                        <span class="back-number">NO.4</span>
+                    </div>
+                    <div class="player-info">
+                        <span class="captain-role">CAPTAIN</span>
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">이창용</div>
+                    </div>
+                </div>
+
+                <div class="player-card captain-card">
+                    <div class="player-img-box">
+                        <img src="./img/한가람.jpg" alt="한가람">
+                        <span class="back-number">NO.13</span>
+                    </div>
+                    <div class="player-info">
+                        <span class="captain-role">VICE-CAPTAIN</span>
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">한가람</div>
+                    </div>
+                </div>
+
+                <div class="player-card captain-card">
+                    <div class="player-img-box">
+                        <img src="./img/김동진.jpg" alt="김동진">
+                        <span class="back-number">NO.22</span>
+                    </div>
+                    <div class="player-info">
+                        <span class="captain-role">VICE-CAPTAIN</span>
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">김동진</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <!-- GOALKEEPER -->
         <div class="position-group" data-position="gk">
             <h2 class="position-title">🧤 GOALKEEPER</h2>
@@ -310,7 +381,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/1.jpg" alt="정민재">
+                        <img src="./img/정민재.jpg" alt="정민재">
                         <span class="back-number">NO.1</span>
                     </div>
                     <div class="player-info">
@@ -321,7 +392,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/23.jpg" alt="김정훈">
+                        <img src="./img/김정훈.jpg" alt="김정훈">
                         <span class="back-number">NO.23</span>
                     </div>
                     <div class="player-info">
@@ -332,7 +403,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/31.jpg" alt="김다솔">
+                        <img src="./img/김다솔.jpg" alt="김다솔">
                         <span class="back-number">NO.31</span>
                     </div>
                     <div class="player-info">
@@ -343,7 +414,7 @@
 
                 <div class="player-card">
                     <div class="player-img-box">
-                        <img src="./img/32.jpg" alt="김성동">
+                        <img src="./img/김성동.jpg" alt="김성동">
                         <span class="back-number">NO.32</span>
                     </div>
                     <div class="player-info">
@@ -359,7 +430,128 @@
         <div class="position-group" data-position="df">
             <h2 class="position-title">🛡️ DEFENDER</h2>
             <div class="player-grid">
-                <!-- 여기에 DF 선수 카드를 추가하세요 -->
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김지훈.jpg" alt="김지훈">
+                        <span class="back-number">NO.3</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">김지훈</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/이창용.jpg" alt="이창용">
+                        <span class="back-number">NO.4</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">이창용</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김영찬.jpg" alt="김영찬">
+                        <span class="back-number">NO.5</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">김영찬</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/강지훈.jpg" alt="강지훈">
+                        <span class="back-number">NO.17</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">강지훈</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/권경원.jpg" alt="권경원">
+                        <span class="back-number">NO.21</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">권경원</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김동진.jpg" alt="김동진">
+                        <span class="back-number">NO.22</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">김동진</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김재현.jpg" alt="김재현">
+                        <span class="back-number">NO.25</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">김재현</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/이태희.jpg" alt="이태희">
+                        <span class="back-number">NO.32</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">이태희</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/대니바커.jpg" alt="대니바커">
+                        <span class="back-number">NO.33</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">대니바커</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/박종현.jpg" alt="박종현">
+                        <span class="back-number">NO.66</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">박종현</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/주현우.jpg" alt="주현우">
+                        <span class="back-number">NO.99</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Defender</div>
+                        <div class="player-name">주현우</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -367,7 +559,106 @@
         <div class="position-group" data-position="mf">
             <h2 class="position-title">⚙️ MIDFIELDER</h2>
             <div class="player-grid">
-                <!-- 여기에 MF 선수 카드를 추가하세요 -->
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/강지완.jpg" alt="강지완">
+                        <span class="back-number">NO.6</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">강지완</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/마테우스.jpg" alt="마테우스">
+                        <span class="back-number">NO.7</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">마테우스</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김정현.jpg" alt="김정현">
+                        <span class="back-number">NO.8</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">김정현</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/한가람.jpg" alt="한가람">
+                        <span class="back-number">NO.13</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">한가람</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/문성우.jpg" alt="문성우">
+                        <span class="back-number">NO.14</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">문성우</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/크네제비치.jpg" alt="크네제비치">
+                        <span class="back-number">NO.18</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">크네제비치</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김보경.jpg" alt="김보경">
+                        <span class="back-number">NO.24</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">김보경</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/이진용.jpg" alt="이진용">
+                        <span class="back-number">NO.26</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">이진용</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/장정우.jpg" alt="장정우">
+                        <span class="back-number">NO.77</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Midfielder</div>
+                        <div class="player-name">장정우</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -375,7 +666,117 @@
         <div class="position-group" data-position="fw">
             <h2 class="position-title">⚡ FORWARD</h2>
             <div class="player-grid">
-                <!-- 여기에 FW 선수 카드를 추가하세요 -->
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/엘쿠라노.jpg" alt="엘쿠라노">
+                        <span class="back-number">NO.9</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">엘쿠라노</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/유키치.jpg" alt="유키치">
+                        <span class="back-number">NO.10</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">유키치</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/아일톤.jpg" alt="아일톤">
+                        <span class="back-number">NO.11</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">아일톤</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/박정훈.jpg" alt="박정훈">
+                        <span class="back-number">NO.15</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">박정훈</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김운.jpg" alt="김운">
+                        <span class="back-number">NO.19</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">김운</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/최건주.jpg" alt="최건주">
+                        <span class="back-number">NO.27</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">최건주</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/블레이즈.jpg" alt="블레이즈">
+                        <span class="back-number">NO.28</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">블레이즈</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/김강.jpg" alt="김강">
+                        <span class="back-number">NO.47</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">김강</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/오형준.jpg" alt="오형준">
+                        <span class="back-number">NO.70</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">오형준</div>
+                    </div>
+                </div>
+
+                <div class="player-card">
+                    <div class="player-img-box">
+                        <img src="./img/채현우.jpg" alt="채현우">
+                        <span class="back-number">NO.71</span>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-position">Forward</div>
+                        <div class="player-name">채현우</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
