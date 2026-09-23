@@ -63,6 +63,8 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-menu a {
@@ -198,7 +200,7 @@
             transform: scale(1.05);
         }
 
-        /* 등번호 배지 - 가독성 향상 처리 */
+        /* 등번호 배지 */
         .back-number {
             position: absolute;
             top: 10px;
@@ -271,7 +273,8 @@
                 padding: 1rem;
             }
             .nav-menu {
-                display: none;
+                gap: 1rem;
+                font-size: 0.9rem;
             }
             .page-header {
                 padding: 3rem 1rem;
@@ -301,13 +304,16 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 수카바티 라운지</a>
-            <ul class="nav-menu">
-                <li><a href="about.html">보라빛 히스토리움</a></li>
-                <li><a href="stadium.html">경기장 정보</a></li>
-                <li><a href="food.html">근처 맛집 추천</a></li>
-                <li><a href="gallery.html">갤러리</a></li>
-                 <li><a href="players.html" class="active">선수단 소개</a></li>
-            </ul>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html">보라빛 히스토리움</a></li>
+                    
+                    <li><a href="stadium.html">경기장 정보</a></li>
+                    <li><a href="food.html">근처 맛집 추천</a></li>
+                    <li><a href="gallery.html">갤러리</a></li>
+                    <li><a href="players.html" class="active">선수단 소개</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
