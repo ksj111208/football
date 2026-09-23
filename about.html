@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>보라빛 히스토리움 - 수카바티 라운지</title>
+    <title>수카바티 라운지 - FC안양 팬 라운지</title>
     <style>
+        /* 공통 스타일 */
         :root {
-            --anyang-purple: #3A0066;
-            --anyang-light-purple: #5C469C;
+            --anyang-purple: #4B0082;
+            --anyang-light-purple: #6A5ACD;
             --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
@@ -25,7 +26,7 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-white);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         a {
@@ -33,13 +34,13 @@
             color: inherit;
         }
 
+        /* 내비게이션 바 */
         header {
-            background-color: rgba(20, 10, 35, 0.95);
+            background-color: rgba(75, 0, 130, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -69,80 +70,133 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
+        .nav-menu a:hover {
             color: var(--anyang-gold);
         }
 
-        .container {
-            max-width: 850px;
-            margin: 3.5rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .about-header {
+        /* 서브페이지 헤더 (history1.jpg 적용) */
+        .page-header {
+            position: relative;
+            background: url('./img/history1.jpg') center/cover no-repeat;
+            padding: 5rem 2rem;
             text-align: center;
-            margin-bottom: 3rem;
+            border-bottom: 4px solid var(--anyang-gold);
+            overflow: hidden;
         }
 
-        .about-header h1 {
-            font-size: 2.2rem;
+        /* 배경 흐림 효과를 2px로 줄여 원본이 덜 흐리게 보이도록 조정 */
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(2px);
+            z-index: 1;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+        }
+
+        .page-header p {
             color: var(--anyang-gold);
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
         }
 
-        .about-header p {
-            color: var(--text-gray);
-            font-size: 1.05rem;
+        /* 본문 콘텐츠 */
+        .about-content {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        .content-card {
+        .section-block {
             background-color: var(--card-bg);
             border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--anyang-gold);
         }
 
-        .content-card h2 {
-            color: var(--anyang-gold);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--anyang-light-purple);
-            padding-left: 0.8rem;
+        .section-block h2 {
+            font-size: 1.8rem;
+            color: var(--anyang-light-purple);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .content-card p {
-            color: #E0E0E0;
-            font-size: 1rem;
+        .section-block p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
             margin-bottom: 1rem;
             line-height: 1.8;
         }
 
+        .history-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .history-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-gray);
+        }
+
+        .history-list li::before {
+            content: '⚽';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+        }
+
+        .history-list strong {
+            color: var(--text-white);
+            margin-right: 10px;
+        }
+
+        /* 푸터 */
         footer {
             background-color: #0A0A0A;
             text-align: center;
             padding: 2rem;
             color: var(--text-gray);
             font-size: 0.85rem;
-            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .about-header h1 { font-size: 1.8rem; }
-            .content-card { padding: 1.5rem; }
+            .section-block { padding: 2rem; }
+            .page-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 수카바티 라운지</a>
             <ul class="nav-menu">
-                <li><a href="about.html" class="active">보라빛 히스토리움</a></li>
+                <li><a href="about.html" style="color: var(--anyang-gold);">수카바티 라운지</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
                 <li><a href="food.html">근처 맛집 추천</a></li>
                 <li><a href="gallery.html">갤러리</a></li>
@@ -150,25 +204,41 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="about-header">
-            <h1>🟣 보라빛 히스토리움</h1>
-            <p>안양이라는 도시와 보라색 유니폼에 담긴 서사</p>
+    <!-- 페이지 타이틀 -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>WE ARE ANYANG</h1>
+            <p>시민들이 만든 우리들의 이야기</p>
+        </div>
+    </section>
+
+    <!-- 소개 본문 -->
+    <main class="about-content">
+        
+        <div class="section-block">
+            <h2>내가 "안양"이라는 팀에 빠지게 된 이유</h2>
+            <p>저는 그저 자유석에서 축구경기를 가끔 오는 한 사람이였는데 어느순간 저의 눈은 경기를 보지 않고 90분 내내 응원을 하는 A.S.U. RED분들 보고 있었고 어느순간 저 또한 서포터즈석에서 목이 터져라 응원하고 있었습니다. 그리고 저희가 직접 역사를 써내려간다는것이 멋있어 A.S.U RED분들과 함께 하게 되었습니다. </p>
         </div>
 
-        <div class="content-card">
-            <h2>수보라빛 스토어 & 히스토리</h2>
-            <p>
-                안양 축구는 단순한 스포츠 그 이상의 의미를 갖습니다. 시민들의 자발적인 열망과 노력으로 다시 찾아온 축구의 열기, 
-                그리고 가변석을 가득 채우는 서포터즈의 '수카바티' 함성이 만들어내는 고유한 분위기가 있습니다.
-            </p>
-            <p>
-                '수카바티 라운지'는 안양을 사랑하는 팬들이 한 공간에서 팀의 역사와 직관 팁을 공유하고, 
-                언제든 서로의 추억을 나눌 수 있도록 만든 비공식 팬 아카이브 공간입니다.
-            </p>
+        <div class="section-block">
+            <h2>우리가 써내려가는 이야기</h2>
+            <p>FC안양은 2013년 안양 시민들의 끈질긴 노력과 축구에 대한 열망으로 창단된 시민구단입니다. '시민, 낙원, 행복'이라는 슬로건 아래 안양 종합운동장을 누비고 있습니다.</p>
+            
+            <ul class="history-list">
+                <li><strong>2013년 2월 2일</strong> FC안양 공식 창단 (안양 시민들의 염원 실현)</li>
+                <li><strong>2013년 4월 7일</strong> <span style="color: var(--anyang-gold); font-weight: bold;">FC안양 창단 첫 승리</span></li>
+                <li><strong>2024년 11월 2일</strong> K리그2 우승 확정 및 <span style="color: var(--anyang-gold); font-weight: bold;">창단 첫 K리그1(1부) 승격</span></li>
+                <li><strong>2025년 4월 20일</strong> <span style="color: var(--anyang-gold); font-weight: bold;">북패 상대 역사상 첫 승리</span> (숙원의 오피셜 승리)</li>
+                <li><strong>홈 구장</strong> 안양 종합운동장 (아워네이션, Our Nation)</li>
+                <li><strong>서포터즈</strong> A.S.U. RED (안양 서포터즈 연합)</li>
+                <li><strong>상징색</strong> 보라색(Purple) - 꺾이지 않는 안양 시민의 긍지와 자부심을 상징</li>
+                
+           
         </div>
+
     </main>
 
+    <!-- 하단 정보 -->
     <footer>
         <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>근처 맛집 추천 - 수카바티 라운지</title>
     <style>
+        /* 공통 스타일 */
         :root {
-            --anyang-purple: #3A0066;
-            --anyang-light-purple: #5C469C;
+            --anyang-purple: #4B0082;
+            --anyang-light-purple: #6A5ACD;
             --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
@@ -33,13 +34,13 @@
             color: inherit;
         }
 
+        /* 내비게이션 바 */
         header {
-            background-color: rgba(20, 10, 35, 0.95);
+            background-color: rgba(75, 0, 130, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -69,144 +70,229 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
+        .nav-menu a:hover {
             color: var(--anyang-gold);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
+        /* 페이지 헤더 */
         .page-header {
+            background-color: var(--anyang-purple);
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 3rem;
+            border-bottom: 4px solid var(--anyang-gold);
         }
 
         .page-header h1 {
-            font-size: 2.2rem;
-            color: var(--anyang-gold);
+            font-size: 2.5rem;
+            color: var(--text-white);
             margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
 
         .page-header p {
-            color: var(--text-gray);
+            color: var(--anyang-gold);
+            font-size: 1.1rem;
         }
 
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        /* 메인 콘텐츠 */
+        .food-content {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
-        .food-card {
+        .intro-block {
             background-color: var(--card-bg);
             border-radius: 12px;
-            padding: 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s, border-color 0.3s;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid var(--anyang-gold);
         }
 
-        .food-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--anyang-gold);
-        }
-
-        .food-tag {
-            display: inline-block;
-            background-color: var(--anyang-purple);
-            color: var(--anyang-gold);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            margin-bottom: 0.8rem;
-        }
-
-        .food-card h3 {
-            font-size: 1.4rem;
+        .intro-block h2 {
+            font-size: 1.6rem;
+            color: var(--anyang-light-purple);
             margin-bottom: 0.5rem;
         }
 
-        .food-card p {
+        .intro-block p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* 맛집 테이블 스타일 */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .food-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+
+        .food-table th {
+            background-color: var(--anyang-purple);
+            color: var(--anyang-gold);
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 1rem 1.2rem;
+            border-bottom: 2px solid var(--anyang-gold);
+        }
+
+        .food-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-gray);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+            vertical-align: middle;
         }
 
-        .food-info {
+        .food-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .food-table tr:hover {
+            background-color: rgba(106, 90, 205, 0.1);
+        }
+
+        .food-table strong {
+            color: var(--text-white);
+            font-size: 1.05rem;
+        }
+
+        /* 테이블 링크 스타일 */
+        .food-link {
+            color: var(--text-white);
+            font-weight: bold;
+            transition: color 0.2s, text-decoration 0.2s;
+        }
+
+        .food-link:hover {
+            color: var(--anyang-gold);
+            text-decoration: underline;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            background-color: rgba(255, 215, 0, 0.15);
+            color: var(--anyang-gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
             font-size: 0.85rem;
-            color: #C0C0C0;
-            border-top: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-top: 0.8rem;
         }
 
+        /* 푸터 */
         footer {
             background-color: #0A0A0A;
             text-align: center;
             padding: 2rem;
             color: var(--text-gray);
             font-size: 0.85rem;
-            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
         }
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .page-header h1 { font-size: 1.8rem; }
+            .food-content { padding: 0 1rem; }
+            .page-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 상단 내비게이션 -->
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 수카바티 라운지</a>
             <ul class="nav-menu">
-                <li><a href="about.html">보라빛 히스토리움</a></li>
+                <li><a href="about.html">수카바티 라운지</a></li>
                 <li><a href="stadium.html">경기장 정보</a></li>
-                <li><a href="food.html" class="active">근처 맛집 추천</a></li>
+                <li><a href="food.html" style="color: var(--anyang-gold);">근처 맛집 추천</a></li>
                 <li><a href="gallery.html">갤러리</a></li>
             </ul>
         </div>
     </header>
 
-    <main class="container">
-        <div class="page-header">
-            <h1>🍻 경기장 근처 추천 맛집</h1>
-            <p>안양 종합운동장 주변 직관 팬들이 자주 찾는 단골 맛집 코스</p>
+    <!-- 페이지 타이틀 -->
+    <section class="page-header">
+        <h1>MATCH DAY FOOD GUIDE</h1>
+        <p>안양 종합운동장 근처 맛집 & 뒷풀이 추천 장소</p>
+    </section>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="food-content">
+        
+        <div class="intro-block">
+            <h2>🍻 금강산도 식후경, 경기 전후 추천 맛집</h2>
+            <p>직관 전 든든한 식사부터 경기 후 승리의 기쁨을 나눌 뒷풀이 장소까지 안양 팬들이 즐겨 찾는 종합운동장 인근 맛집 목록입니다.</p>
         </div>
 
-        <div class="food-grid">
-            <div class="food-card">
-                <span class="food-tag">뒷풀이 / 국밥</span>
-                <h3>종합운동장 순대국</h3>
-                <p>경기 후 차가워진 몸을 녹이기 제격인 진한 국물 맛집.</p>
-                <div class="food-info">📍 운동장 도보 5분거리</div>
-            </div>
-
-            <div class="food-card">
-                <span class="food-tag">승리 기원 / 치맥</span>
-                <h3>비산동 치킨 가든</h3>
-                <p>직관 직후 승리의 맥주 한잔하기 좋은 야외 테이블 완비 매장.</p>
-                <div class="food-info">📍 운동장 정문 건너편</div>
-            </div>
-
-            <div class="food-card">
-                <span class="food-tag">경기 전 간식</span>
-                <h3>관악산 분식</h3>
-                <p>가볍게 떡볶이와 튀김 포장해서 경기장 입장하기 좋은 곳.</p>
-                <div class="food-info">📍 버스정류장 인근</div>
-            </div>
+        <!-- 맛집 목록 표 -->
+        <div class="table-container">
+            <table class="food-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">식당명</th>
+                        <th style="width: 25%;">추천 메뉴</th>
+                        <th style="width: 20%;">위치 / 거리</th>
+                        <th style="width: 35%;">특징 & 꿀팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="https://place.map.kakao.com/8658634" target="_blank" class="food-link">
+                                <strong>관악관 🔗</strong>
+                            </a>
+                        </td>
+                        <td><span class="menu-tag">냉면</span> <span class="menu-tag">만두</span></td>
+                        <td>종합운동장 정문 도보 8분</td>
+                        <td>안양의 '관악관'은 1986년부터 3대째 이어온 평양냉면과 불고기 전문 노포로, 슴슴하고 깊은 맛의 육수와 구수한 메밀 면이 특징입니다. 대형 주차장과 넓은 홀을 갖추고 있어 가족 외식이나 모임 장소로 큰 사랑을 받고 있습니다.</td>
+                    <tr>
+                        <td>
+                            <a href="https://place.map.kakao.com/175905436" target="_blank" class="food-link">
+                                <strong>중화미식 🔗</strong>
+                            </a>
+                        </td>
+                        <td><span class="menu-tag">불고기 짜장면</span> <span class="menu-tag">짬뽕</span></td>
+                        <td>종합운동장 인근 도보 5분</td>
+                        <td>안양 동안구 비산동에 위치한 '중화미식'은 깔끔하고 정갈한 분위기에서 독특한 중식 요리를 즐길 수 있는 맛집입니다. 안양종합운동장 사거리 인근에 자리 잡고 있으며, 일반적인 중국집과 달리 차별화된 시그니처 메뉴들로 입소문을 타고 있습니다.</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://place.map.kakao.com/1596610486" target="_blank" class="food-link">
+                                <strong>온정코다리 🔗</strong>
+                            </a>
+                        </td>
+                        <td><span class="menu-tag">코다리찜</span> <span class="menu-tag">가오리찜</span></td>
+                        <td>종합운동장 인근 도보 10분</td>
+                        <td>안양 동안구 비산동(수촌마을)에 위치한 '온정코다리'는 매콤한 양념과 푸짐한 구성으로 지역 주민과 맘카페 사이에서 입소문이 난 숨은 찜 요리 맛집입니다. 안양종합운동장 바로 맞은편 골목에 자리 잡고 있으며, 사장님이 주문 즉시 조리하여 정성스러운 손맛을 느낄 수 있는 아담하고 깔끔한 식당입니다.</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://place.map.kakao.com/954859933" target="_blank" class="food-link">
+                                <strong>남문순대국 🔗</strong>
+                            </a>
+                        </td>
+                        <td><span class="menu-tag">순대국</span> <span class="menu-tag">순대</span></td>
+                        <td>운동장 사거리 도보 6분</td>
+                        <td>안양에 위치한 남문순대국은 안양종합운동장 정면 입구 바로 앞에 위치하여, 돈사골을 24시간 동안 진하게 고아낸 뽀얗고 알찬 국물이 특징인 로컬 맛집입니다. 잡내 없이 오소리감투, 곱창, 고기 등 건더기가 푸짐하게 들어가 인근 주민들과 축구팬들에게 큰 사랑을 받고 있습니다</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 
     <footer>
         <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
-        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
     </footer>
 
 </body>

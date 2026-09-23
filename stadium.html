@@ -6,13 +6,14 @@
     <title>경기장 정보 - 수카바티 라운지</title>
     <style>
         :root {
-            --anyang-purple: #3A0066;
-            --anyang-light-purple: #5C469C;
+            --anyang-purple: #4B0082;
+            --anyang-light-purple: #6A5ACD;
             --anyang-gold: #FFD700;
             --bg-dark: #121212;
             --card-bg: #1E1E2E;
             --text-white: #FFFFFF;
             --text-gray: #A0A0A0;
+            --border-color: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -25,7 +26,7 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-white);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         a {
@@ -33,13 +34,13 @@
             color: inherit;
         }
 
+        /* 내비게이션 바 */
         header {
-            background-color: rgba(20, 10, 35, 0.95);
+            background-color: rgba(75, 0, 130, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -69,123 +70,109 @@
             transition: color 0.3s;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
+        .nav-menu a:hover {
             color: var(--anyang-gold);
         }
 
-        .container {
-            max-width: 950px;
-            margin: 3.5rem auto;
-            padding: 0 1.5rem;
-        }
-
+        /* 페이지 헤더 */
         .page-header {
+            background-color: var(--anyang-purple);
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 2.5rem;
+            border-bottom: 4px solid var(--anyang-gold);
         }
 
         .page-header h1 {
-            font-size: 2.2rem;
-            color: var(--anyang-gold);
+            font-size: 2.5rem;
+            color: var(--text-white);
             margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
 
         .page-header p {
-            color: var(--text-gray);
+            color: var(--anyang-gold);
+            font-size: 1.1rem;
         }
 
-        .stadium-hero-img {
+        /* 경기장 본문 콘텐츠 */
+        .stadium-content {
+            max-width: 1000px;
+            margin: 3rem auto 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* 경기장 상단 이미지 영역 (stadium1.jpg) */
+        .stadium-img-container {
             width: 100%;
-            max-height: 420px;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .stadium-img-container img {
+            width: 100%;
+            max-height: 400px;
             object-fit: cover;
             border-radius: 12px;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--anyang-gold);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
-        .seat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .seat-card {
+        /* 테이블 스타일 */
+        .info-table-container {
+            width: 100%;
+            overflow-x: auto;
             background-color: var(--card-bg);
             border-radius: 12px;
-            padding: 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 4px solid var(--anyang-gold);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .seat-card h3 {
-            font-size: 1.3rem;
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .info-table th, .info-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .info-table th {
+            background-color: rgba(75, 0, 130, 0.5);
+            color: var(--anyang-gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table td.category {
+            font-weight: bold;
+            color: var(--anyang-light-purple);
+            white-space: nowrap;
+            width: 15%;
+        }
+
+        .info-table td.sub-category {
+            font-weight: bold;
             color: var(--text-white);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            white-space: nowrap;
+            width: 20%;
         }
 
-        .seat-badge {
-            font-size: 0.75rem;
-            background-color: var(--anyang-purple);
-            color: var(--anyang-gold);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+        .info-table td.details {
+            color: var(--text-gray);
+            line-height: 1.7;
         }
 
-        .seat-card p {
-            color: #C0C0C0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .info-section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .info-section h2 {
-            font-size: 1.4rem;
-            color: var(--anyang-gold);
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 0.8rem;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            position: relative;
-            padding-left: 1.4rem;
-            margin-bottom: 0.9rem;
-            color: #E0E0E0;
-            line-height: 1.6;
-        }
-
-        .info-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
+        .highlight {
             color: var(--anyang-gold);
             font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .highlight-text {
-            color: var(--anyang-gold);
-            font-weight: 600;
         }
 
         footer {
@@ -194,14 +181,15 @@
             padding: 2rem;
             color: var(--text-gray);
             font-size: 0.85rem;
-            margin-top: 4rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
         }
 
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            .page-header h1 { font-size: 1.8rem; }
-            .info-section { padding: 1.5rem; }
+            .stadium-content { padding: 0 1rem; }
+            .info-table th, .info-table td { padding: 1rem; font-size: 0.95rem; }
+            .stadium-img-container img { max-height: 250px; }
         }
     </style>
 </head>
@@ -211,61 +199,93 @@
         <div class="nav-container">
             <a href="index.html" class="logo">🟣 수카바티 라운지</a>
             <ul class="nav-menu">
-                <li><a href="about.html">보라빛 히스토리움</a></li>
-                <li><a href="stadium.html" class="active">경기장 정보</a></li>
+                <li><a href="about.html">수카바티 라운지</a></li>
+                <li><a href="stadium.html" style="color: var(--anyang-gold);">경기장 정보</a></li>
                 <li><a href="food.html">근처 맛집 추천</a></li>
                 <li><a href="gallery.html">갤러리</a></li>
             </ul>
         </div>
     </header>
 
-    <main class="container">
-        <div class="page-header">
-            <h1>🏟️ 안양 종합운동장 가이드</h1>
-            <p>좌석 배치와 시야 선택부터 티켓 예매, 교통 안내까지 완벽 정리</p>
+    <section class="page-header">
+        <h1>STADIUM INFO</h1>
+        <p>안양 종합운동장(아워네이션) 직관 완벽 가이드</p>
+    </section>
+
+    <main class="stadium-content">
+        <!-- 경기장 대표 이미지 영역 (stadium1.jpg) -->
+        <div class="stadium-img-container">
+            <img src="./img/stadium1.jpg" alt="안양 종합운동장 전경">
         </div>
 
-        <img src="./img/stadium1.jpg" alt="안양 종합운동장 전경" class="stadium-hero-img">
-
-        <h2 style="font-size: 1.4rem; color: var(--anyang-gold); margin-bottom: 1.2rem;">📍 구역별 좌석 특징 & 시야 추천</h2>
-        <div class="seat-grid">
-            <div class="seat-card">
-                <h3>서포터즈석 <span class="seat-badge">열정 응원</span></h3>
-                <p>안양의 열혈 서포터즈와 함께 뜨거운 깃발 퍼포먼스와 응원가를 열정적으로 부르며 직관할 수 있는 구역입니다.</p>
-            </div>
-
-            <div class="seat-card">
-                <h3>퍼스트스탠딩석 <span class="seat-badge">현장감 최상</span></h3>
-                <p>피치와 최단 거리에 위치해 서서 경기를 관람하며 선수들의 터치라인 호흡을 가장 생생하게 느낄 수 있습니다.</p>
-            </div>
-
-            <div class="seat-card">
-                <h3>일반석 (E/W석) <span class="seat-badge">전체 시야</span></h3>
-                <p>경기 전체적인 전술 흐름과 경기장 분위기를 한눈에 조망하며 편안하게 관람할 수 있어 초보 직관러에게 추천합니다.</p>
-            </div>
-
-            <div class="seat-card">
-                <h3>원정석 (S석) <span class="seat-badge">원정 팬 구역</span></h3>
-                <p>원정팀 응원단을 위한 전용 구역으로 별도의 이동 동선을 통해 안전하고 편리하게 이용하실 수 있습니다.</p>
-            </div>
-        </div>
-
-        <div class="info-section">
-            <h2>🎟️ 티켓 예매 및 입장 안내</h2>
-            <ul class="info-list">
-                <li><span class="highlight-text">온라인 예매:</span> 공식 예매처(티켓링크)를 통해 경기 수일 전부터 사전 예매가 가능합니다.</li>
-                <li><span class="highlight-text">현장 발권:</span> 경기 시작 2시간 전부터 운동장 매표소에서 현장 티켓 수령 및 구매가 진행됩니다.</li>
-                <li><span class="highlight-text">입장 시간:</span> 쾌적한 관람을 위해 경기 시작 <span class="highlight-text">1시간~1시간 30분 전</span> 입장을 권장합니다.</li>
-            </ul>
-        </div>
-
-        <div class="info-section">
-            <h2>🚌 대중교통 & 주차 안내</h2>
-            <ul class="info-list">
-                <li><span class="highlight-text">지하철 4호선 (범계역):</span> 1번 출구 버스정류장에서 <span class="highlight-text">5-2번, 60번</span> 버스 탑승 후 '안양종합운동장' 하차 (약 10분 소요)</li>
-                <li><span class="highlight-text">지하철 1호선 (안양역):</span> 1번 출구 건너편에서 <span class="highlight-text">8번, 8-1번, 9번</span> 버스 탑승 후 하차 (약 15분 소요)</li>
-                <li><span class="highlight-text">자차 / 주차:</span> 경기 당일 종합운동장 내 주차장이 혼잡할 수 있으니 대중교통 이용을 적극 권장합니다.</li>
-            </ul>
+        <!-- 경기장 정보 표 -->
+        <div class="info-table-container">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>주요 내용</th>
+                        <th>세부 안내 및 꿀팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="category" rowspan="3">기본 정보</td>
+                        <td class="sub-category">위치</td>
+                        <td class="details">경기도 안양시 동안구 비산동 1023 (안양 종합운동장)</td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">대중교통</td>
+                        <td class="details">
+                            • <span class="highlight">4호선 범계역:</span> 2번 출구 → 5713, 8번 버스 탑승 후 '안양종합운동장' 하차<br>
+                            • <span class="highlight">1호선 안양역:</span> 1번 출구 → 8-1, 9, 11-3번 버스 이용
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">주차 안내 & 꿀팁</td>
+                        <td class="details">
+                            • <span class="highlight">메인 주차장:</span> 경기 시작 <span class="highlight">2시간 전 입차 필수</span> (1시간 전부터 만차 가능성 매우 높음)<br>
+                            • <span class="highlight">굿즈샵 앞 농구장 주차 구역:</span> MD샵/가변석 접근성이 가장 좋아 팬들이 가장 먼저 선점하는 인기 주차 스팟 (조기 도착 시 적극 추천)<br>
+                            • <span class="highlight">대체 주차장:</span> 만차 시 수촌마을 공영주차장, 비산체육공원 주차장, 또는 안양시청 주차장(주말 무료/대중교통 10분 연계) 이용 추천
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="category" rowspan="3">구역별 안내</td>
+                        <td class="sub-category">홈 응원석 (N석)</td>
+                        <td class="details">서포터즈 A.S.U. RED 전용 가변석. 선수 피치와 가장 가까워 박진감 넘치는 직관 가능</td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">일반석 (W/E석)</td>
+                        <td class="details">경기 전체 시야가 탁 트인 좌석. 가족/연인 단위 편안한 관람에 적합</td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">원정석 (S석)</td>
+                        <td class="details">원정 팀 팬 전용 구역 (원정 전용 가변석 및 트랙 구역)</td>
+                    </tr>
+                    <tr>
+                        <td class="category" rowspan="3">직관 꿀팁</td>
+                        <td class="sub-category">구장 내 먹거리</td>
+                        <td class="details">
+                            • 메인 복도 및 가변석 뒤편 푸드트럭 (닭강정, 떡볶이, 츄러스 등)<br>
+                            • 매점 운영 (음료, 과자류 판매)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">반입 제한 규정</td>
+                        <td class="details">
+                            • 600ml 초과 음료, 캔/유리병, 알코올 도수 높은 주류 반입 불가<br>
+                            • 600ml 이하 PET 음료는 뚜껑 제거 후 반입 가능
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="sub-category">포토존 스팟</td>
+                        <td class="details">
+                            • 가변석 입구 주변 FC안양 대형 로고 구조물<br>
+                            • MD 샵 옆 메인 포토월
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
 

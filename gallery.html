@@ -111,38 +111,112 @@
             <p>보라빛으로 물든 경기장의 순간들과 뜨거운 서포팅 기록</p>
         </div>
 
+        <!-- 필터 버튼 영역 -->
         <div class="filter-group">
-            <button class="filter-btn active">전체보기</button>
-            <button class="filter-btn">🏟️ 경기장 시야</button>
-            <button class="filter-btn">💜 서포터즈 응원</button>
-            <button class="filter-btn">⚽ 승리 세레머니</button>
+            <button class="filter-btn active" data-filter="all">전체보기</button>
+            <button class="filter-btn" data-filter="stadium">🏟️ 경기장 시야</button>
+            <button class="filter-btn" data-filter="cheer">💜 서포터즈 응원</button>
+            <button class="filter-btn" data-filter="victory">⚽ 승리 세레머니</button>
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item">
+            <!-- N석 가변석 (경기장 시야) -->
+            <div class="gallery-item" data-category="stadium">
                 <img src="./img/n석.jpg" alt="N석 가변석 응원 현장" class="gallery-img">
                 <div class="gallery-info">
-                    <span class="gallery-tag">#N석 #가변석</span>
+                    <span class="gallery-tag">#경기장시야 #N석 #가변석</span>
                     <h3>N석 가변석 뜨거운 응원 열기</h3>
-                    <p>피치와 가장 가까운 곳에서 선수들과 함께 호흡하는 공간</p>
+                    <p>피치와 가장 가까운 곳에서 선수들과 함께 호흡하는 스탠딩 구역 시야</p>
                 </div>
             </div>
 
-            <div class="gallery-item">
+            <!-- W석 자유석 (경기장 시야) -->
+            <div class="gallery-item" data-category="stadium">
+                <img src="./img/w석.jpg" alt="W석 자유석 시야" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#경기장시야 #W석 #자유석</span>
+                    <h3>W석 자유석 한눈에 보이는 시야</h3>
+                    <p>선수단 입주로와 전술 흐름을 한눈에 조망할 수 있는 W석 자유석 시야</p>
+                </div>
+            </div>
+
+            <!-- 야간 경기 시야 (경기장 시야) -->
+            <div class="gallery-item" data-category="stadium">
+                <img src="./img/저녁경기jpg.jpg" alt="야간 경기장 조명 시야" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#경기장시야 #야간경기 #나이트뷰</span>
+                    <h3>보라빛 조명이 어우러진 야간 매치 시야</h3>
+                    <p>화려한 조명 연출과 함께 밤하늘 아래 더욱 빛나는 경기장 전경</p>
+                </div>
+            </div>
+
+            <!-- S석 원정석 (경기장 시야) -->
+            <div class="gallery-item" data-category="stadium">
+                <img src="./img/원정석사진.jpg" alt="S석 원정 응원석 시야" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#경기장시야 #S석 #원정석</span>
+                    <h3>S석 원정 응원석 맞은편 시야</h3>
+                    <p>원정팀 팬들이 위치하는 S석 구역에서 바라본 경기장 피치 방향 시야</p>
+                </div>
+            </div>
+
+            <!-- 서포터즈석 1 (서포터즈 응원) -->
+            <div class="gallery-item" data-category="cheer">
                 <img src="./img/서포터즈석.jpg" alt="서포터즈석 현장" class="gallery-img">
                 <div class="gallery-info">
-                    <span class="gallery-tag">#서포터즈석 #열정응원</span>
+                    <span class="gallery-tag">#서포터즈응원 #서포터즈석</span>
                     <h3>서포터즈석 뜨거운 응원 현장</h3>
                     <p>깃발 퍼포먼스와 응원가로 경기장의 열기를 더하는 서포터즈 구역</p>
                 </div>
             </div>
 
-            <div class="gallery-item">
+            <!-- 떼떼떼1 (서포터즈 응원) -->
+            <div class="gallery-item" data-category="cheer">
+                <img src="./img/떼떼떼1.jpg" alt="서포터즈 떼떼떼 응원" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#서포터즈응원 #떼떼떼 #열정응원</span>
+                    <h3>보라빛 응원 열기 (떼떼떼)</h3>
+                    <p>경기장의 분위기를 주도하는 서포터즈의 일체감 있는 응원 퍼포먼스</p>
+                </div>
+            </div>
+
+            <!-- 승리1 (서포터즈 응원) -->
+            <div class="gallery-item" data-category="cheer">
+                <img src="./img/승리1.jpg" alt="승리의 환호 응원" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#서포터즈응원 #승리의환호 #뜨거운응원</span>
+                    <h3>승리를 향한 서포터즈의 환호</h3>
+                    <p>선수들과 서포터즈가 함께 만들어낸 뜨거운 승리의 서포팅 순간</p>
+                </div>
+            </div>
+
+            <!-- 경기 직후 세레머니 (승리 세레머니) -->
+            <div class="gallery-item" data-category="victory">
                 <img src="./img/win.jpg" alt="경기 직후 세레머니" class="gallery-img">
                 <div class="gallery-info">
-                    <span class="gallery-tag">#승리 #세레머니</span>
+                    <span class="gallery-tag">#승리 #세레머니 #팬인사</span>
                     <h3>경기 직후 선수단 인사 & 승리의 순간</h3>
                     <p>승리 후 팬들과 선수단이 하나 되는 보라빛 감동의 순간</p>
+                </div>
+            </div>
+
+            <!-- 새로 추가된 선수단 (승리 세레머니) -->
+            <div class="gallery-item" data-category="victory">
+                <img src="./img/선수단.jpg" alt="선수단 단체 세레머니" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#승리 #선수단 #단체세레머니</span>
+                    <h3>원팀의 자부심, 선수단 단체 세레머니</h3>
+                    <p>경기 종료 후 다 함께 모여 승리의 기쁨을 함께 나누는 자랑스러운 선수단</p>
+                </div>
+            </div>
+
+            <!-- 새로 추가된 우승 (승리 세레머니) -->
+            <div class="gallery-item" data-category="victory">
+                <img src="./img/우승.jpg" alt="우승 환희의 트로피 세레머니" class="gallery-img">
+                <div class="gallery-info">
+                    <span class="gallery-tag">#승리 #우승 #트로피세레머니</span>
+                    <h3>영광의 순간, 우승 트로피 세레머니</h3>
+                    <p>모든 땀과 열매가 결실을 맺은 잊지 못할 챔피언 우승 세레머니</p>
                 </div>
             </div>
         </div>
@@ -152,6 +226,31 @@
         <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
         <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
     </footer>
+
+    <!-- 필터 작동용 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
