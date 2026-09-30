@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제작자 소개 - 수카바티 라운지</title>
+    <style>
+        :root {
+            --anyang-purple: #3A0066;
+            --anyang-light-purple: #5C469C;
+            --anyang-gold: #FFD700;
+            --bg-dark: #121212;
+            --card-bg: #1E1E2E;
+            --text-white: #FFFFFF;
+            --text-gray: #A0A0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 내비게이션 바 */
+        header {
+            background-color: rgba(20, 10, 35, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--anyang-gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--anyang-gold);
+        }
+
+        /* 페이지 헤더 (슬로건.jpg가 문구 포함 전체 잘림 없이 보이도록 가로 배너형 조정) */
+        .page-header {
+            position: relative;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 3px solid var(--anyang-gold);
+            overflow: hidden;
+            background-color: #0A0A0A;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./img/슬로건.jpg') center/contain no-repeat;
+            filter: brightness(0.7);
+            z-index: 1;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            background: rgba(18, 18, 18, 0.5);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            color: var(--anyang-gold);
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+        }
+
+        .page-header p {
+            font-size: 0.95rem;
+            color: var(--text-white);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        /* 제작자 소개 본문 컨테이너 */
+        .creator-container {
+            max-width: 800px;
+            margin: 3.5rem auto;
+            padding: 0 2rem;
+        }
+
+        .creator-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* 제작자 사진 영역 (150px로 확대) */
+        .creator-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            overflow: hidden;
+            border: 3px solid var(--anyang-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background-color: #151522;
+        }
+
+        .creator-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .creator-card h2 {
+            font-size: 2rem;
+            color: var(--anyang-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .creator-role {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .creator-bio {
+            font-size: 1.05rem;
+            color: var(--text-white);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            word-break: keep-all;
+        }
+
+        .contact-box {
+            background: rgba(18, 18, 18, 0.6);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .contact-box p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            color: var(--anyang-gold);
+            font-weight: 700;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #0A0A0A;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .creator-card {
+                padding: 2rem 1.5rem;
+            }
+            .page-header {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 내비게이션 -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🟣 수카바티 라운지</a>
+            <ul class="nav-menu">
+                <li><a href="about.html">보라빛 히스토리움</a></li>
+                <li><a href="players.html">선수단 소개</a></li>
+                <li><a href="chants.html">응원가</a></li>
+                <li><a href="stadium.html">경기장 정보</a></li>
+                <li><a href="food.html">근처 맛집 추천</a></li>
+                <li><a href="gallery.html">직관 갤러리</a></li>
+                <li><a href="creator.html" class="active">제작자 소개</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 페이지 헤더 (슬로건.jpg가 잘리지 않게 배너형으로 배치) -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>CREATOR INFO</h1>
+            <p>수카바티 라운지를 만들어가는 사람을 소개합니다</p>
+        </div>
+    </section>
+
+    <!-- 제작자 소개 섹션 -->
+    <main class="creator-container">
+        <div class="creator-card">
+            <!-- 제작자 사진 영역 (150px) -->
+            <div class="creator-avatar">
+                <img src="./img/제작자.jpg" alt="제작자 고서준 사진">
+            </div>
+            <h2>고서준</h2>
+            <div class="creator-role">FC안양 축구 팬 / 사이트 제작자</div>
+            <div class="creator-bio">
+                안녕하세요! FC안양을 사랑하는 중학교 3학년 학생이자,<br>
+                <strong>수카바티 라운지</strong>의 제작 및 운영을 맡고 있는 고서준입니다.<br><br>
+                안양을 향한 열정과 애정으로 열심히 사이트를 만들었지만, 아직 중학생이고 FC안양에 대해 전문적으로 깊게 알지 못하다 보니 부족한 내용이나 아쉬운 부분이 많을 수 있습니다. 이 점 너른 마음으로 양해해 주시면 감사하겠습니다!<br><br>
+                팬분들과 함께 소통하며 더 알차고 멋진 보라빛 공간으로 채워나갈 테니, 따뜻한 시선으로 지켜봐 주세요. 수정이 필요한 부분이나 피드백은 언제든 이메일로 편하게 보내주세요!
+            </div>
+            <div class="contact-box">
+                <p>CONTACT EMAIL</p>
+                <div class="contact-email">ksj111208@gmail.com</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 수카바티 라운지. All rights reserved.</p>
+        <p>본 사이트는 개인 축구 팬이 운영하는 비공식 팬 사이트입니다.</p>
+        <p>제작자: 고서준</p>
+        <p>ksj111208@gmail.com</p>
+    </footer>
+
+</body>
+</html>
