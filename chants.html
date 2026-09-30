@@ -25,7 +25,8 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-white);
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 0.95rem;
         }
 
         a {
@@ -49,11 +50,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 900;
             color: var(--anyang-gold);
             letter-spacing: 1px;
@@ -68,6 +69,7 @@
         }
 
         .nav-menu a {
+            font-size: 0.95rem;
             font-weight: 600;
             transition: color 0.3s;
         }
@@ -80,36 +82,36 @@
         /* 서브페이지 히어로 섹션 */
         .page-header {
             background: linear-gradient(135deg, rgba(58, 0, 102, 0.9), rgba(18, 18, 18, 0.95)), url('./img/main2.jpg') center/cover no-repeat;
-            padding: 4rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
             border-bottom: 3px solid var(--anyang-gold);
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.1rem;
             color: var(--anyang-gold);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             letter-spacing: 1px;
         }
 
         .page-header p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--text-gray);
         }
 
         /* 응원가 컨테이너 레이아웃 */
         .chants-section {
             max-width: 1200px;
-            margin: 3rem auto 5rem auto;
+            margin: 2.5rem auto 4rem auto;
             padding: 0 2rem;
         }
 
         .section-title {
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             color: var(--anyang-gold);
             border-bottom: 2px solid var(--anyang-purple);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.2rem; /* 공백 축소 */
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -118,15 +120,15 @@
         .chants-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 1.2rem; /* 그리드 간격 축소 */
         }
 
         /* 응원가 카드 */
         .chant-card {
             background-color: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 215, 0, 0.2);
-            padding: 2rem;
+            padding: 1.2rem; /* 내부 패딩 약간 축소하여 촘촘하게 배치 */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -136,28 +138,29 @@
         }
 
         .chant-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--anyang-gold);
-            box-shadow: 0 10px 25px rgba(58, 0, 102, 0.4);
+            box-shadow: 0 8px 20px rgba(58, 0, 102, 0.4);
         }
 
         .chant-title {
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--text-white);
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }
 
+        /* 가사 글자 크기를 작게 조정 (0.85rem) */
         .chant-lyrics {
             background: rgba(15, 15, 22, 0.6);
             border-left: 3px solid var(--anyang-gold);
-            padding: 1rem;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
+            padding: 0.7rem 0.9rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem; 
             color: #dcdcdc;
             white-space: pre-line;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
         }
 
         .chant-actions {
@@ -170,8 +173,9 @@
             background-color: var(--anyang-purple);
             color: var(--text-white);
             border: 1px solid var(--anyang-gold);
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: 600;
             text-align: center;
             cursor: pointer;
@@ -187,26 +191,26 @@
         footer {
             background-color: #0A0A0A;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             color: var(--text-gray);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* 반응형 설정 */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 1rem;
+                padding: 0.8rem 1rem;
             }
             .nav-menu {
                 gap: 1rem;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .page-header {
-                padding: 3rem 1rem;
+                padding: 2.5rem 1rem;
             }
             .page-header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .chants-grid {
                 grid-template-columns: 1fr;
@@ -245,12 +249,21 @@
         
         <div class="chants-grid">
 
+            <!-- 응원가 모음집 -->
+            <div class="chant-card">
+                <div class="chant-title">FC안양 응원가 모음집</div>
+                <div class="chant-lyrics">FC안양의 다양한 응원가들을 한자리에서 연속으로 감상할 수 있는 종합 응원가 모음 영상입니다.</div>
+                <div class="chant-actions">
+                    <a href="https://www.youtube.com/watch?v=BRym6ph_F6c&t=220s" target="_blank" class="btn-listen">▶ 모음집 연속으로 듣기</a>
+                </div>
+            </div>
+
             <!-- 응원가 1: 부셔버려 -->
             <div class="chant-card">
                 <div class="chant-title">부셔버려</div>
                 <div class="chant-lyrics">안양! 안양! 부숴버려 ○○!</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+부셔버려" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=kMvznnMOecQ&t=10s" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
@@ -287,7 +300,7 @@
 라 라라라 랄라랄라라 랄라라라 랄라라라라
 라 라라라 랄라랄라라 랄라라라 랄라라</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+안양폭도맹진가" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=1SgW9o6Apzo" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
@@ -306,7 +319,7 @@ You Go We Go 평생 우리 함께 해
 You Go We Go 평생 우리 함께 해
 나를 살아있게 해 너와 나의 안양</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+너와+나의+안양" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=7lsgFlLzg00&list=RD7lsgFlLzg00&start_radio=1" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
@@ -318,7 +331,7 @@ You Go We Go 평생 우리 함께 해
 외쳐 승리를 위한! 함! 성!
 안양의 영광을 위해</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+GLORY" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=5f3xcAg40Gc&t=2s" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
@@ -335,7 +348,7 @@ Dream on forever
 안양이 없으면 살아갈 수 없는
 바보같은 녀석들</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+바보같은+녀석들" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=CQvDiVoE4BE&t=1s" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
@@ -351,7 +364,7 @@ Dream on forever
 오~오 오오 오오오 오오
 오오 오오 오~ 오오오</div>
                 <div class="chant-actions">
-                    <a href="https://www.youtube.com/results?search_query=FC안양+BANG" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
+                    <a href="https://www.youtube.com/watch?v=Rmv3TBam80Y&list=PL-BaDTAY7hTCg-aqR0Tcz4p6jVTNEj7iS&index=11" target="_blank" class="btn-listen">▶ 유튜브에서 듣기</a>
                 </div>
             </div>
 
